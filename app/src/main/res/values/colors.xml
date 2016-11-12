@@ -5,6 +5,31 @@
     <color name="colorAccent">#FF4081</color>
 
     <!--
+    Alpha layer helper [xx]000000
+    100% — ff
+    95%  — f2
+    90%  — e6
+    85%  — d9
+    80%  — cc
+    75%  — bf
+    70%  — b3
+    65%  — a6
+    60%  — 99
+    55%  — 8c
+    50%  — 80
+    45%  — 73
+    40%  — 66
+    35%  — 59
+    30%  — 4d
+    25%  — 40
+    20%  — 33
+    15%  — 26
+    10%  — 1a
+    5%   — 0d
+    0%   — 00
+    -->
+
+    <!--
     <color name="black">#000000</color>
     <color name="black_dividers">#1f000000</color>
     <color name="black_text_disabled">#42000000</color>
