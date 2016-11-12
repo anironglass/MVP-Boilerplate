@@ -26,3 +26,7 @@ task wrapper(type: Wrapper) {
     gradleVersion = '3.1'
     distributionUrl = distributionUrl.replace("bin", "all")
 }
+
+ext {
+    config = "$rootProject.projectDir/config/"
+}
