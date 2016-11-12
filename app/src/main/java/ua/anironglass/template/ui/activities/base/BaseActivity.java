@@ -2,10 +2,13 @@ package ua.anironglass.template.ui.activities.base;
 
 import android.os.Bundle;
 import android.support.v4.util.LongSparseArray;
-import android.support.v7.app.AppCompatActivity;
+
+import com.trello.rxlifecycle.android.ActivityEvent;
+import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
 
 import java.util.concurrent.atomic.AtomicLong;
 
+import rx.Observable;
 import timber.log.Timber;
 import ua.anironglass.template.App;
 import ua.anironglass.template.injection.components.ActivityComponent;
@@ -18,7 +21,7 @@ import ua.anironglass.template.injection.modules.ActivityModule;
  * creation of Dagger components and makes sure that instances of ConfigPersistentComponent survive
  * across configuration changes.
  */
-public class BaseActivity extends AppCompatActivity {
+public class BaseActivity extends RxAppCompatActivity {
 
     private static final String KEY_ACTIVITY_ID = "KEY_ACTIVITY_ID";
     private static final AtomicLong NEXT_ID = new AtomicLong(0);
@@ -67,5 +70,9 @@ public class BaseActivity extends AppCompatActivity {
 
     public ActivityComponent getComponent() {
         return mActivityComponent;
+    }
+
+    public Observable<ActivityEvent> getLifecycle() {
+        return lifecycle();
     }
 }
