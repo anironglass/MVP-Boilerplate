@@ -24,19 +24,19 @@ public class MainActivity extends BaseActivity implements MainMvpView {
 
     @Override
     public void onResume() {
-        Timber.i("Resume MainActivity");
+        Timber.d("Resume MainActivity");
         super.onResume();
     }
 
     @Override
     protected void onPause() {
-        Timber.i("Pause MainActivity");
+        Timber.d("Pause MainActivity");
         super.onPause();
     }
 
     @Override
     protected void onDestroy() {
-        Timber.i("Destroy MainActivity");
+        Timber.d("Destroy MainActivity");
         super.onDestroy();
         mainPresenter.detachView();
     }
