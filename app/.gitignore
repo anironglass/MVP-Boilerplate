@@ -1,0 +1,10 @@
+# Gradle files
+/*/build/
+build/
+
+# Keystore files
+keystore/
+*.jks
+
+# Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio
+*iml
