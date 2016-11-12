@@ -28,6 +28,11 @@ android {
             debuggable true
         }
     }
+
+    // Resolve gradle conflicts with dependencies
+    configurations.all {
+        resolutionStrategy.force 'com.google.code.findbugs:jsr305:3.0.1'
+    }
 }
 
 // Log out test results to console
@@ -44,6 +49,9 @@ ext {
     JUNIT_VERSION = '4.12'
     MOCKITO_VERSION = '2.2.11'
     ROBOLECTRIC_VERSION = '3.1.4'
+    RXANDROID_VERSION = '1.2.1'
+    RXJAVA_VERSION = '1.2.2'
+    RXLIFECYCLE_VERSION = '1.0'
     SUPPORT_LIBRARY_VERSION = '25.0.0'
     TIMBER_VERSION = '4.3.1'
 }
