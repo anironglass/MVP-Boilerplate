@@ -7,6 +7,7 @@ import javax.inject.Singleton;
 
 import dagger.Component;
 import ua.anironglass.template.data.local.PreferencesHelper;
+import ua.anironglass.template.data.remote.ApiHelper;
 import ua.anironglass.template.injection.ApplicationContext;
 import ua.anironglass.template.injection.ApplicationInstance;
 import ua.anironglass.template.injection.modules.ApplicationModule;
@@ -19,6 +20,7 @@ public interface ApplicationComponent {
 
     @ApplicationContext Context context();
     @ApplicationInstance Application application();
+    ApiHelper apiHelper();
     RxEventBus eventBus();
     LeakCanaryHelper leakCanary();
     PreferencesHelper preferencesHelper();
