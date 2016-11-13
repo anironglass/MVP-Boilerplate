@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.getkeepsafe.dexcount'
+apply plugin: 'me.tatarka.retrolambda'
 apply from: "$config/application.gradle"
 apply from: "$config/quality/quality.gradle"
 
