@@ -10,11 +10,13 @@ import butterknife.ButterKnife;
 import timber.log.Timber;
 import ua.anironglass.template.R;
 import ua.anironglass.template.ui.activities.base.BaseActivity;
+import ua.anironglass.template.utils.LeakCanaryHelper;
 
 public class MainActivity extends BaseActivity implements MainMvpView {
 
     @BindView(R.id.recycler_view) RecyclerView recyclerView;
     @Inject MainPresenter mainPresenter;
+    @Inject LeakCanaryHelper leakCanary;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +27,8 @@ public class MainActivity extends BaseActivity implements MainMvpView {
         ButterKnife.bind(this);
 
         initializeView();
+
+        leakCanary.watch(this);
     }
 
     @Override
