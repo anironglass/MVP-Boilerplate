@@ -7,7 +7,6 @@ import org.junit.runners.model.Statement;
 import rx.Scheduler;
 import rx.android.plugins.RxAndroidPlugins;
 import rx.android.plugins.RxAndroidSchedulersHook;
-import rx.functions.Func1;
 import rx.plugins.RxJavaHooks;
 import rx.schedulers.Schedulers;
 
@@ -34,24 +33,9 @@ public final class RxSchedulersRule implements TestRule {
                 RxJavaHooks.reset();
                 RxAndroidPlugins.getInstance().reset();
 
-                RxJavaHooks.setOnIOScheduler(new Func1<Scheduler, Scheduler>() {
-                    @Override
-                    public Scheduler call(Scheduler scheduler) {
-                        return Schedulers.immediate();
-                    }
-                });
-                RxJavaHooks.setOnNewThreadScheduler(new Func1<Scheduler, Scheduler>() {
-                    @Override
-                    public Scheduler call(Scheduler scheduler) {
-                        return Schedulers.immediate();
-                    }
-                });
-                RxJavaHooks.setOnComputationScheduler(new Func1<Scheduler, Scheduler>() {
-                    @Override
-                    public Scheduler call(Scheduler scheduler) {
-                        return Schedulers.immediate();
-                    }
-                });
+                RxJavaHooks.setOnIOScheduler(scheduler -> Schedulers.immediate());
+                RxJavaHooks.setOnNewThreadScheduler(scheduler -> Schedulers.immediate());
+                RxJavaHooks.setOnComputationScheduler(scheduler -> Schedulers.immediate());
                 RxAndroidPlugins.getInstance().registerSchedulersHook(mRxAndroidSchedulersHook);
 
                 base.evaluate();
