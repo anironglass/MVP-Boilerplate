@@ -18,12 +18,8 @@ import rx.schedulers.Schedulers;
  */
 public final class RxSchedulersRule implements TestRule {
 
-    private final RxAndroidSchedulersHook mRxAndroidSchedulersHook = new RxAndroidSchedulersHook() {
-        @Override
-        public Scheduler getMainThreadScheduler() {
-            return Schedulers.immediate();
-        }
-    };
+    private final ImmediateRxAndroidSchedulersHook mRxAndroidSchedulersHook =
+            new ImmediateRxAndroidSchedulersHook();
 
     @Override
     public Statement apply(final Statement base, Description description) {
@@ -45,4 +41,15 @@ public final class RxSchedulersRule implements TestRule {
             }
         };
     }
+
+
+    private class ImmediateRxAndroidSchedulersHook extends RxAndroidSchedulersHook {
+
+        @Override
+        public Scheduler getMainThreadScheduler() {
+            return Schedulers.immediate();
+        }
+
+    }
+
 }
