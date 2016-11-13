@@ -1,15 +1,19 @@
 package ua.anironglass.template.ui.activities.main;
 
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
 
 import javax.inject.Inject;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import timber.log.Timber;
 import ua.anironglass.template.R;
 import ua.anironglass.template.ui.activities.base.BaseActivity;
 
 public class MainActivity extends BaseActivity implements MainMvpView {
 
+    @BindView(R.id.recycler_view) RecyclerView recyclerView;
     @Inject MainPresenter mainPresenter;
 
     @Override
@@ -18,6 +22,7 @@ public class MainActivity extends BaseActivity implements MainMvpView {
         Timber.d("Create MainActivity");
         getComponent().inject(this);
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
 
         initializeView();
     }
