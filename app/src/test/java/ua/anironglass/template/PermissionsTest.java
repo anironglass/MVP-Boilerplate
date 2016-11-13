@@ -17,7 +17,9 @@ import static com.google.common.truth.Truth.assertThat;
 public final class PermissionsTest {
 
     private static final Object[] EXPECTED_PERMISSIONS = {
-            "android.permission.INTERNET"
+            "android.permission.INTERNET",
+            "android.permission.READ_EXTERNAL_STORAGE",
+            "android.permission.WRITE_EXTERNAL_STORAGE"
     };
 
     private static final String MERGED_MANIFEST_FILE =
