@@ -34,6 +34,12 @@ dependencies {
     provided "org.glassfish:javax.annotation:$JAVAX_VERSION"
     annotationProcessor "com.google.dagger:dagger-compiler:$DAGGER2_VERSION"
 
+    // App's debug dependencies
+    debugCompile "com.squareup.leakcanary:leakcanary-android:$LEAK_CANARY_VERSION"
+
+    // App's release dependencies
+    releaseCompile "com.squareup.leakcanary:leakcanary-android-no-op:$LEAK_CANARY_VERSION"
+
     // Instrumentation test dependencies
     androidTestCompile("com.android.support.test.espresso:espresso-core:$ESPRESSO_VERSION", {
         exclude group: 'com.android.support', module: 'support-annotations'
@@ -44,6 +50,7 @@ dependencies {
 
     // Unit tests dependencies
     testCompile "com.google.truth:truth:$TRUTH_VERSION"
+    testCompile "com.squareup.leakcanary:leakcanary-android-no-op:$LEAK_CANARY_VERSION"
     testCompile "junit:junit:$JUNIT_VERSION"
     testCompile "org.mockito:mockito-core:$MOCKITO_VERSION"
     testCompile "org.robolectric:robolectric:$ROBOLECTRIC_VERSION"
