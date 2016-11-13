@@ -1,6 +1,5 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.getkeepsafe.dexcount'
-apply plugin: 'com.neenbedankt.android-apt'
 apply from: "$config/application.gradle"
 apply from: "$config/quality/quality.gradle"
 
@@ -31,7 +30,7 @@ dependencies {
     compile "io.reactivex:rxandroid:$RXANDROID_VERSION"
     compile "io.reactivex:rxjava:$RXJAVA_VERSION"
     provided "org.glassfish:javax.annotation:$JAVAX_VERSION"
-    apt "com.google.dagger:dagger-compiler:$DAGGER2_VERSION"
+    annotationProcessor "com.google.dagger:dagger-compiler:$DAGGER2_VERSION"
 
     // Instrumentation test dependencies
     androidTestCompile("com.android.support.test.espresso:espresso-core:$ESPRESSO_VERSION", {
@@ -39,12 +38,12 @@ dependencies {
     })
     androidTestCompile "junit:junit:$JUNIT_VERSION"
     androidTestCompile "org.mockito:mockito-core:$MOCKITO_VERSION"
-    androidTestApt "com.google.dagger:dagger-compiler:$DAGGER2_VERSION"
+    androidTestAnnotationProcessor "com.google.dagger:dagger-compiler:$DAGGER2_VERSION"
 
     // Unit tests dependencies
     testCompile "com.google.truth:truth:$TRUTH_VERSION"
     testCompile "junit:junit:$JUNIT_VERSION"
     testCompile "org.mockito:mockito-core:$MOCKITO_VERSION"
     testCompile "org.robolectric:robolectric:$ROBOLECTRIC_VERSION"
-    testApt "com.google.dagger:dagger-compiler:$DAGGER2_VERSION"
+    testAnnotationProcessor "com.google.dagger:dagger-compiler:$DAGGER2_VERSION"
 }
