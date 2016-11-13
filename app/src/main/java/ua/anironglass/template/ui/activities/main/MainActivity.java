@@ -21,7 +21,7 @@ public class MainActivity extends BaseActivity implements MainMvpView {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Timber.d("Create MainActivity");
+        Timber.d("MainActivity created");
         getComponent().inject(this);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
@@ -33,19 +33,19 @@ public class MainActivity extends BaseActivity implements MainMvpView {
 
     @Override
     public void onResume() {
-        Timber.d("Resume MainActivity");
+        Timber.d("MainActivity resumed");
         super.onResume();
     }
 
     @Override
     protected void onPause() {
-        Timber.d("Pause MainActivity");
+        Timber.d("MainActivity paused");
         super.onPause();
     }
 
     @Override
     protected void onDestroy() {
-        Timber.d("Destroy MainActivity");
+        Timber.d("MainActivity destroyed");
         super.onDestroy();
         mainPresenter.detachView();
     }
