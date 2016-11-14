@@ -19,7 +19,7 @@ import static com.google.common.truth.Truth.assertThat;
 @Config(manifest = Config.NONE, sdk = DefaultConfig.EMULATE_SDK)
 public final class PreferencesTest {
 
-    private static final String TEST_SOMETHING = "test_something";
+    private static final int TEST_ALBUM_ID = 42;
 
     private PreferencesHelper mPreferencesHelper;
 
@@ -30,16 +30,16 @@ public final class PreferencesTest {
     }
 
     @Test
-    public void shouldSetSomething() {
-        mPreferencesHelper.setSomething(TEST_SOMETHING);
-        assertThat(mPreferencesHelper.getSomething())
-                .matches(TEST_SOMETHING);
+    public void shouldSetAlbumId() {
+        mPreferencesHelper.setAlbumId(TEST_ALBUM_ID);
+        assertThat(mPreferencesHelper.getAlbumId())
+                .isEqualTo(TEST_ALBUM_ID);
     }
 
     @Test
     public void shouldMatchDefaults() {
-        assertThat(mPreferencesHelper.getSomething())
-                .matches(PreferencesHelper.DEFAULT_SOMETHING);
+        assertThat(mPreferencesHelper.getAlbumId())
+                .isEqualTo(PreferencesHelper.DEFAULT_ALBUM_ID);
     }
 
 }

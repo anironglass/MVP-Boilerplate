@@ -2,7 +2,7 @@ package ua.anironglass.template.data.local;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.support.annotation.NonNull;
+import android.support.annotation.IntRange;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -15,9 +15,9 @@ public final class PreferencesHelper {
 
     private static final String PREF_FILE_NAME = "anironglass_pref_file";
 
-    private static final String PREF_SOMETHING = "pref_something";
+    private static final String PREF_ALBUM_ID = "pref_album_id";
 
-    public static final String DEFAULT_SOMETHING = "default_something";
+    public static final int DEFAULT_ALBUM_ID = 1;
 
     private final SharedPreferences mPref;
 
@@ -27,13 +27,13 @@ public final class PreferencesHelper {
         mPref = context.getSharedPreferences(PREF_FILE_NAME, Context.MODE_PRIVATE);
     }
 
-    public String getSomething() {
-        return mPref.getString(PREF_SOMETHING, DEFAULT_SOMETHING);
+    public int getAlbumId() {
+        return mPref.getInt(PREF_ALBUM_ID, DEFAULT_ALBUM_ID);
     }
 
-    public void setSomething(@NonNull String something) {
+    public void setAlbumId(@IntRange(from = 1, to = 100) int albumId) {
         SharedPreferences.Editor editor = mPref.edit();
-        editor.putString(PREF_SOMETHING, something);
+        editor.putInt(PREF_ALBUM_ID, albumId);
         editor.apply();
     }
 
