@@ -7,7 +7,7 @@ import java.util.concurrent.TimeUnit;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
-import retrofit2.converter.jackson.JacksonConverterFactory;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 
 public interface ApiService {
@@ -35,7 +35,7 @@ public interface ApiService {
                     .baseUrl(BASE_URL)
                     .client(getClient())
                     .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-                    .addConverterFactory(JacksonConverterFactory.create())
+                    .addConverterFactory(GsonConverterFactory.create())
                     .build();
         }
 
