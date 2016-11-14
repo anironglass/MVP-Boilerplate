@@ -22,8 +22,9 @@ import butterknife.ButterKnife;
 import ua.anironglass.template.R;
 import ua.anironglass.template.data.model.Photo;
 import ua.anironglass.template.injection.ActivityContext;
+import ua.anironglass.template.injection.PerActivity;
 
-
+@PerActivity
 class PhotosAdapter extends RecyclerView.Adapter<PhotosAdapter.ViewHolder>  {
 
     private ArrayList<Photo> mPhotos = new ArrayList<>();

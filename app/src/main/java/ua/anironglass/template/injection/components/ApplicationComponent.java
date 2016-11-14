@@ -12,7 +12,6 @@ import ua.anironglass.template.data.local.DatabaseHelper;
 import ua.anironglass.template.data.local.PreferencesHelper;
 import ua.anironglass.template.data.remote.ApiHelper;
 import ua.anironglass.template.injection.ApplicationContext;
-import ua.anironglass.template.injection.ApplicationInstance;
 import ua.anironglass.template.injection.modules.ApplicationModule;
 import ua.anironglass.template.utils.LeakCanaryHelper;
 import ua.anironglass.template.utils.RxEventBus;
@@ -24,7 +23,7 @@ public interface ApplicationComponent {
     void inject(SyncService syncService);
 
     @ApplicationContext Context context();
-    @ApplicationInstance Application application();
+    Application application();
     ApiHelper apiHelper();
     DatabaseHelper databaseHelper();
     DataManager dataManager();

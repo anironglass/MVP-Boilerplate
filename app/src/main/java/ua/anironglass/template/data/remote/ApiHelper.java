@@ -14,7 +14,6 @@ import rx.Observable;
 import rx.schedulers.Schedulers;
 import timber.log.Timber;
 import ua.anironglass.template.data.model.Photo;
-import ua.anironglass.template.injection.ApiServiceInstance;
 import ua.anironglass.template.utils.LogHelper;
 
 @Singleton
@@ -27,7 +26,7 @@ public class ApiHelper {
 
     @Inject
     @SuppressWarnings("WeakerAccess")  // Used in global singleton
-    public ApiHelper(@ApiServiceInstance ApiService apiService) {
+    public ApiHelper(ApiService apiService) {
         mApiService = apiService;
     }
 

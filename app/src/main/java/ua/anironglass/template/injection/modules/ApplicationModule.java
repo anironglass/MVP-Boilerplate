@@ -9,9 +9,7 @@ import javax.inject.Singleton;
 import dagger.Module;
 import dagger.Provides;
 import ua.anironglass.template.data.remote.ApiService;
-import ua.anironglass.template.injection.ApiServiceInstance;
 import ua.anironglass.template.injection.ApplicationContext;
-import ua.anironglass.template.injection.ApplicationInstance;
 
 
 /**
@@ -28,7 +26,6 @@ public final class ApplicationModule {
 
     @NonNull
     @Provides
-    @ApplicationInstance
     Application provideApplication() {
         return mApplication;
     }
@@ -43,7 +40,6 @@ public final class ApplicationModule {
     @NonNull
     @Provides
     @Singleton
-    @ApiServiceInstance
     ApiService provideApiService() {
         return ApiService.Builder.newApiService();
     }

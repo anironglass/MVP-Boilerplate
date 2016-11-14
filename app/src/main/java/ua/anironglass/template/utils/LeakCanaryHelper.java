@@ -9,8 +9,6 @@ import com.squareup.leakcanary.RefWatcher;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
-import ua.anironglass.template.injection.ApplicationInstance;
-
 
 @Singleton
 public final class LeakCanaryHelper {
@@ -19,7 +17,7 @@ public final class LeakCanaryHelper {
 
     @Inject
     @SuppressWarnings("WeakerAccess")  // Used in global singleton
-    public LeakCanaryHelper(@ApplicationInstance Application application) {
+    public LeakCanaryHelper(@NonNull Application application) {
         mRefWatcher = LeakCanary.install(application);
     }
 
