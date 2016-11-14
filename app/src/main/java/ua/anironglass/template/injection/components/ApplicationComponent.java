@@ -6,6 +6,7 @@ import android.content.Context;
 import javax.inject.Singleton;
 
 import dagger.Component;
+import ua.anironglass.template.data.DataManager;
 import ua.anironglass.template.data.local.PreferencesHelper;
 import ua.anironglass.template.data.remote.ApiHelper;
 import ua.anironglass.template.injection.ApplicationContext;
@@ -21,6 +22,7 @@ public interface ApplicationComponent {
     @ApplicationContext Context context();
     @ApplicationInstance Application application();
     ApiHelper apiHelper();
+    DataManager dataManager();
     RxEventBus eventBus();
     LeakCanaryHelper leakCanary();
     PreferencesHelper preferencesHelper();
