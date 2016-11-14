@@ -27,12 +27,12 @@ import ua.anironglass.template.injection.ActivityContext;
 class PhotosAdapter extends RecyclerView.Adapter<PhotosAdapter.ViewHolder>  {
 
     private ArrayList<Photo> mPhotos = new ArrayList<>();
-    private RequestManager mGlideRequestManager;
+    private RequestManager mGlide;
 
     @Inject
     PhotosAdapter(@ActivityContext Context context) {
         setHasStableIds(true);
-        mGlideRequestManager = Glide.with(context);
+        mGlide = Glide.with(context);
     }
 
     @Override
@@ -77,7 +77,7 @@ class PhotosAdapter extends RecyclerView.Adapter<PhotosAdapter.ViewHolder>  {
         void bind(@NonNull Photo photo) {
             String title = "[" + photo.getId() + "] " + photo.getTitle();
             textTitle.setText(title);
-            mGlideRequestManager.load(photo.getThumbnailUrl())
+            mGlide.load(photo.getThumbnailUrl())
                     .into(imageThumbnail);
         }
     }
