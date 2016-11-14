@@ -34,6 +34,11 @@ android {
         }
     }
 
+    // Suppress Lint errors
+    lintOptions {
+        disable 'InvalidPackage'
+    }
+
     // Resolve gradle conflicts with dependencies
     configurations.all {
         resolutionStrategy.force 'com.google.code.findbugs:jsr305:3.0.1'
