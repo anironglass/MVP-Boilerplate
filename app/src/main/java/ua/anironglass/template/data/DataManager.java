@@ -8,8 +8,8 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 
 import rx.Observable;
-import rx.android.schedulers.AndroidSchedulers;
 import timber.log.Timber;
+import ua.anironglass.template.data.local.DatabaseHelper;
 import ua.anironglass.template.data.local.PreferencesHelper;
 import ua.anironglass.template.data.model.Photo;
 import ua.anironglass.template.data.remote.ApiHelper;
@@ -19,13 +19,16 @@ import ua.anironglass.template.data.remote.ApiHelper;
 public class DataManager {
 
     private final ApiHelper mApiHelper;
+    private final DatabaseHelper mDatabaseHelper;
     private final PreferencesHelper mPreferencesHelper;
 
     @Inject
     @SuppressWarnings("WeakerAccess")  // Used in activity singleton
     public DataManager(@NonNull ApiHelper apiHelper,
+                       @NonNull DatabaseHelper databaseHelper,
                        @NonNull PreferencesHelper preferencesHelper) {
         mApiHelper = apiHelper;
+        mDatabaseHelper = databaseHelper;
         mPreferencesHelper = preferencesHelper;
     }
 
@@ -33,8 +36,8 @@ public class DataManager {
     public Observable<List<Photo>> getPhotos() {
         int albumId = mPreferencesHelper.getAlbumId();
         Timber.d("DataManager::getPhotos, albumId = %d", albumId);
-        return mApiHelper.getPhotos(albumId)
-                .observeOn(AndroidSchedulers.mainThread());
+        return mDatabaseHelper.getPhotos(albumId)
+                .distinct();
     }
 
 }
