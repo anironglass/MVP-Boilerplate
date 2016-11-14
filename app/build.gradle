@@ -27,6 +27,9 @@ dependencies {
     compile "com.google.dagger:dagger:$DAGGER2_VERSION"
     compile "com.jakewharton:butterknife:$BUTTER_KNIFE_VERSION"
     compile "com.jakewharton.timber:timber:$TIMBER_VERSION"
+    compile ("com.squareup.sqlbrite:sqlbrite:$SQL_BRITE_VERSION") {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    }
     compile "com.squareup.retrofit2:retrofit:$RETROFIT2_VERSION"
     compile "com.squareup.retrofit2:adapter-rxjava:$RETROFIT2_VERSION"
     compile "com.squareup.retrofit2:converter-gson:$RETROFIT2_VERSION"
