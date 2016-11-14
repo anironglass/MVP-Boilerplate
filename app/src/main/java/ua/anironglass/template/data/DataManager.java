@@ -40,4 +40,12 @@ public class DataManager {
                 .distinct();
     }
 
+    @NonNull
+    Observable<Photo> syncPhotos() {
+        int albumId = mPreferencesHelper.getAlbumId();
+        Timber.d("DataManager::syncPhotos, albumId = %d", albumId);
+        return mApiHelper.getPhotos(albumId)
+                .concatMap(mDatabaseHelper::setPhotos);
+    }
+
 }

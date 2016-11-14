@@ -7,6 +7,7 @@ import javax.inject.Singleton;
 
 import dagger.Component;
 import ua.anironglass.template.data.DataManager;
+import ua.anironglass.template.data.SyncService;
 import ua.anironglass.template.data.local.DatabaseHelper;
 import ua.anironglass.template.data.local.PreferencesHelper;
 import ua.anironglass.template.data.remote.ApiHelper;
@@ -19,6 +20,8 @@ import ua.anironglass.template.utils.RxEventBus;
 @Singleton
 @Component(modules = ApplicationModule.class)
 public interface ApplicationComponent {
+
+    void inject(SyncService syncService);
 
     @ApplicationContext Context context();
     @ApplicationInstance Application application();

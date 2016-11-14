@@ -38,7 +38,9 @@ public class DatabaseHelper {
 
     public Observable<Photo> setPhotos(final Collection<Photo> newPhotos) {
         return Observable.create(new SavePhotosObservable(newPhotos))
-                .doOnNext(photos -> Timber.d(LogHelper.attachThreadName("Saved local photos")));
+                .doOnNext(photo -> Timber.d(
+                        LogHelper.attachThreadName("Saved local photo, id = %d"),
+                        photo.getId()));
     }
 
     public Observable<List<Photo>> getPhotos(@IntRange(from = 1, to = 100) int albumId) {
