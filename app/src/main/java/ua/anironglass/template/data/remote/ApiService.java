@@ -2,12 +2,16 @@ package ua.anironglass.template.data.remote;
 
 import android.support.annotation.NonNull;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
+import ua.anironglass.template.utils.AutoValueGsonTypeAdapterFactory;
 
 
 public interface ApiService {
@@ -31,22 +35,22 @@ public interface ApiService {
 
         @NonNull
         private static Retrofit getRetrofit() {
-            return new Retrofit.Builder()
-                    .baseUrl(BASE_URL)
-                    .client(getClient())
-                    .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .build();
-        }
-
-        @NonNull
-        private static OkHttpClient getClient() {
-            return new OkHttpClient.Builder()
+            OkHttpClient okHttpClient = new OkHttpClient.Builder()
                     .connectTimeout(CONNECT_TIMEOUT, TimeUnit.SECONDS)
                     .writeTimeout(WRITE_TIMEOUT, TimeUnit.SECONDS)
                     .readTimeout(READ_TIMEOUT, TimeUnit.SECONDS)
                     .build();
+            Gson gson = new GsonBuilder()
+                    .registerTypeAdapterFactory(AutoValueGsonTypeAdapterFactory.create())
+                    .create();
+            return new Retrofit.Builder()
+                    .baseUrl(BASE_URL)
+                    .client(okHttpClient)
+                    .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                    .addConverterFactory(GsonConverterFactory.create(gson))
+                    .build();
         }
+
     }
 
 }
