@@ -23,9 +23,9 @@
     <dimen name="small_padding">8dp</dimen>
 
     <!-- CardView dimensions -->
-    <dimen name="card_large_corner_radius">9dp</dimen>
-    <dimen name="card_normal_corner_radius">6dp</dimen>
-    <dimen name="card_small_corner_radius">3dp</dimen>
+    <dimen name="card_large_corner_radius">8dp</dimen>
+    <dimen name="card_normal_corner_radius">4dp</dimen>
+    <dimen name="card_small_corner_radius">2dp</dimen>
 
     <!-- Photos dimensions -->
     <dimen name="photos_thumbnail_size">48dp</dimen>
