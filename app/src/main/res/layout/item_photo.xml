@@ -6,31 +6,32 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/white"
-    android:layout_marginLeft="8dp"
-    android:layout_marginRight="8dp"
-    android:layout_marginTop="4dp"
-    android:layout_marginBottom="4dp"
-    app:cardCornerRadius="6dp" >
+    android:layout_marginTop="@dimen/small_margin"
+    android:layout_marginBottom="@dimen/small_margin"
+    android:padding="@dimen/large_padding"
+    app:cardCornerRadius="@dimen/card_normal_corner_radius" >
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical">
+        android:layout_height="wrap_content" >
 
         <ImageView
             android:id="@+id/photo_thumbnail"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:layout_margin="4dp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintVertical_bias="0.0"
-            tools:ignore="ContentDescription"/>
+            android:layout_marginTop="@dimen/normal_margin"
+            android:layout_marginBottom="@dimen/normal_margin"
+            android:layout_marginStart="@dimen/normal_margin"
+            android:layout_marginLeft="@dimen/normal_margin"
+            tools:ignore="ContentDescription" />
 
         <TextView
             android:id="@+id/photo_title"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -38,13 +39,17 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintVertical_bias="0.0"
-            android:layout_margin="8dp"
-            android:padding="8dp"
+            android:layout_marginTop="@dimen/normal_margin"
+            android:layout_marginBottom="@dimen/normal_margin"
+            android:layout_marginStart="@dimen/large_margin"
+            android:layout_marginLeft="@dimen/large_margin"
+            android:layout_marginEnd="@dimen/normal_margin"
+            android:layout_marginRight="@dimen/normal_margin"
             android:textSize="@dimen/text_title"
             android:textColor="@color/black_text"
             android:maxLines="2"
             android:ellipsize="end"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
     </android.support.constraint.ConstraintLayout>
 
