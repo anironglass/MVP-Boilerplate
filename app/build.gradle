@@ -39,6 +39,16 @@ dependencies {
     annotationProcessor "com.google.dagger:dagger-compiler:$DAGGER2_VERSION"
     annotationProcessor "com.jakewharton:butterknife-compiler:$BUTTER_KNIFE_VERSION"
 
+    // Replace provided dependency below with official AutoValue once this issue is fixed
+    // https://github.com/google/auto/issues/268
+    provided "com.jakewharton.auto.value:auto-value-annotations:$AUTO_VALUE_VERSION"
+    provided "com.ryanharter.auto.value:auto-value-gson:$AUTO_VALUE_GSON_VERSION"
+    annotationProcessor "com.google.auto.value:auto-value:$AUTO_VALUE_VERSION"
+    annotationProcessor "com.ryanharter.auto.value:auto-value-parcel:$AUTO_VALUE_PARCEL_VERSION"
+    annotationProcessor "com.ryanharter.auto.value:auto-value-gson:$AUTO_VALUE_GSON_VERSION"
+    annotationProcessor "com.squareup:javapoet:$JAVA_POET_VERSION"
+    // https://github.com/rharter/auto-value-parcel/issues/64
+
     // App's debug dependencies
     debugCompile "com.squareup.leakcanary:leakcanary-android:$LEAK_CANARY_VERSION"
 
