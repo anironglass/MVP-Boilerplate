@@ -45,7 +45,7 @@ public class DatabaseHelper {
         return mDatabase.createQuery(
                 Database.PhotosTable.TABLE_NAME,
                 "SELECT * FROM " + Database.PhotosTable.TABLE_NAME
-                        + "WHERE " + Database.PhotosTable.COLUMN_ALBUM_ID + "=" + albumId)
+                        + " WHERE " + Database.PhotosTable.COLUMN_ALBUM_ID + "=" + albumId)
                 .mapToList(Database.PhotosTable::parseCursor)
                 .doOnNext(photos -> Timber.d(
                         LogHelper.attachThreadName("Loaded local photos, albumId = %d"),

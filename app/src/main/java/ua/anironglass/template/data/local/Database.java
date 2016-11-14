@@ -28,8 +28,8 @@ final class Database {
                         COLUMN_ALBUM_ID + " INTEGER NOT NULL, " +
                         COLUMN_TITLE + " TEXT NOT NULL, " +
                         COLUMN_URL + " TEXT NOT NULL, " +
-                        COLUMN_THUMBNAIL_URL + " TEXT NOT NULL, " +
-                        " ); ";
+                        COLUMN_THUMBNAIL_URL + " TEXT NOT NULL" +
+                        "); ";
 
         static ContentValues toContentValues(Photo photo) {
             ContentValues values = new ContentValues();
