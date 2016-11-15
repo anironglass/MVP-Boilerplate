@@ -6,7 +6,7 @@ Libraries and tools included:
 
 - Support libraries
 - RecyclerView, CardView, ConstraintLayout, Design and Annotations
-- [RxJava](https://github.com/ReactiveX/RxJava), [RxAndroid](https://github.com/ReactiveX/RxAndroid) and [RxLifecycle] (https://github.com/trello/RxLifecycle)
+- [RxJava](https://github.com/ReactiveX/RxJava), [RxAndroid](https://github.com/ReactiveX/RxAndroid) and [RxLifecycle](https://github.com/trello/RxLifecycle)
 - [Retrolambda](https://github.com/orfjackal/retrolambda) with [Gradle Retrolambda Plugin](https://github.com/evant/gradle-retrolambda)
 - [Retrofit 2](http://square.github.io/retrofit/)
 - [Dagger 2](http://google.github.io/dagger/)
