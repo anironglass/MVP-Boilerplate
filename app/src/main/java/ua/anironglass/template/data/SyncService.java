@@ -53,7 +53,7 @@ public class SyncService extends Service {
         mSubscription = dataManager.syncPhotos()
                 .subscribeOn(Schedulers.io())
                 .subscribe(
-                        photo -> {},
+                        photo -> { },
                         error -> {
                             Timber.w(error, "Error syncing.");
                             stopSelf(startId);
