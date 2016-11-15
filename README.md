@@ -7,7 +7,7 @@ Libraries and tools included:
 - Support libraries
 - RecyclerView, CardView, ConstraintLayout, Design and Annotations
 - [RxJava](https://github.com/ReactiveX/RxJava), [RxAndroid](https://github.com/ReactiveX/RxAndroid) and [RxLifecycle] (https://github.com/trello/RxLifecycle)
-- [Retrolambda] (https://github.com/orfjackal/retrolambda) with [Gradle Retrolambda Plugin] (https://github.com/evant/gradle-retrolambda)
+- [Retrolambda](https://github.com/orfjackal/retrolambda) with [Gradle Retrolambda Plugin] (https://github.com/evant/gradle-retrolambda)
 - [Retrofit 2](http://square.github.io/retrofit/)
 - [Dagger 2](http://google.github.io/dagger/)
 - [SqlBrite](https://github.com/square/sqlbrite)
@@ -15,13 +15,13 @@ Libraries and tools included:
 - [Timber](https://github.com/JakeWharton/timber)
 - [Glide](https://github.com/bumptech/glide)
 - [AutoValue](https://github.com/google/auto/tree/master/value) with extensions [AutoValueParcel](https://github.com/rharter/auto-value-parcel) and [AutoValueGson](https://github.com/rharter/auto-value-gson)
-- [LeakCanary] (https://github.com/square/leakcanary)
+- [LeakCanary](https://github.com/square/leakcanary)
 - Functional tests with [Espresso](https://google.github.io/android-testing-support-library/docs/espresso/index.html)
 - [Robolectric](http://robolectric.org/)
 - [Mockito](http://mockito.org/)
-- [Truth] (https://github.com/google/truth)
+- [Truth](https://github.com/google/truth)
 - [Checkstyle](http://checkstyle.sourceforge.net/), [PMD](https://pmd.github.io/) and [Findbugs](http://findbugs.sourceforge.net/) for code analysis
-- [Dexcount Gradle Plugin] (https://github.com/KeepSafe/dexcount-gradle-plugin)
+- [Dexcount Gradle Plugin](https://github.com/KeepSafe/dexcount-gradle-plugin)
 
 ## Requirements
 
