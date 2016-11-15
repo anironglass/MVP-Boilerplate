@@ -4,10 +4,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import java.util.List;
+import java.util.Locale;
 
 import javax.inject.Inject;
 
@@ -19,6 +21,7 @@ import ua.anironglass.template.data.SyncService;
 import ua.anironglass.template.data.model.Photo;
 import ua.anironglass.template.ui.activities.base.BaseActivity;
 import ua.anironglass.template.utils.LeakCanaryHelper;
+import ua.anironglass.template.utils.SnackbarHelper;
 
 public class MainActivity extends BaseActivity implements MainMvpView {
 
@@ -26,9 +29,12 @@ public class MainActivity extends BaseActivity implements MainMvpView {
             "ua.anironglass.template.ui.activities.main.MainActivity.EXTRA_TRIGGER_SYNC_FLAG";
 
     @BindView(R.id.recycler_view) RecyclerView recyclerView;
+    @BindView(R.id.content_view) ConstraintLayout contentView;
     @Inject LeakCanaryHelper leakCanary;
     @Inject MainPresenter mainPresenter;
     @Inject PhotosAdapter photosAdapter;
+    @Inject
+    SnackbarHelper mSnackbarHelper;
 
     /**
      * Return an Intent to start this Activity.
@@ -81,6 +87,10 @@ public class MainActivity extends BaseActivity implements MainMvpView {
     public void showPhotos(List<Photo> photos) {
         photosAdapter.addPhotos(photos);
         photosAdapter.notifyDataSetChanged();
+
+        mSnackbarHelper.showShort(
+                contentView,
+                String.format(Locale.getDefault(), "Loaded %d photos", photos.size()));
 
         leakCanary.watch(photos);
     }
