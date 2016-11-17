@@ -32,3 +32,5 @@ task wrapper(type: Wrapper) {
 ext {
     config = "$rootProject.projectDir/config/"
 }
+
+apply from: "$config/buildtimedetails.gradle"

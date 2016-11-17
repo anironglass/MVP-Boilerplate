@@ -1,0 +1,148 @@
+import java.util.concurrent.TimeUnit
+
+// Log timings per task.
+class BuildTimeDetailsListener implements TaskExecutionListener, BuildListener {
+    def static final THRESHOLD = 50
+    def static final SQUARE = "*"
+    def static final FILL = " "
+
+    private Clock clock
+    private List<Timing> timings = []
+
+    @Override
+    void beforeExecute(Task task) {
+        clock = new Clock()
+    }
+
+    @Override
+    void afterExecute(Task task, TaskState taskState) {
+        timings << new Timing(
+                clock.getTimeInMs(),
+                task.getPath(),
+                taskState.getFailure() == null,
+                taskState.getDidWork(),
+                taskState.getSkipped()
+        )
+    }
+
+    @Override
+    void buildFinished(BuildResult result) {
+        if (timings.size() == 0) {
+            return
+        }
+        timings = timings.sort(false, { it.ms })
+
+        printf "Build time details:\n\n"
+        formatTable(timings)
+    }
+
+    @Override
+    void buildStarted(Gradle gradle) {}
+
+    @Override
+    void projectsEvaluated(Gradle gradle) {}
+
+    @Override
+    void projectsLoaded(Gradle gradle) {}
+
+    @Override
+    void settingsEvaluated(Settings settings) {}
+
+    def formatTable(List<Timing> timings) {
+        def total = timings.sum { t -> t.ms }
+        def longestTaskName = timings.collect { it.path.length() }.max()
+        def longestTiming = timings*.ms.max()
+        def maxColumns = getTerminalWidth(80);
+
+        def maxBarWidth
+        if (longestTaskName > maxColumns / 2) {
+            maxBarWidth = (maxColumns - 20) / 2
+        } else {
+            maxBarWidth = maxColumns - (longestTaskName + 20)
+        }
+
+        for (timing in timings) {
+            if (timing.ms >= THRESHOLD) {
+                printf "%s (%s) %s\n",
+                        createBar(timing.ms / total, timing.ms / longestTiming, maxBarWidth),
+                        formatDuration(timing.ms),
+                        timing.path
+            }
+        }
+    }
+
+    static createBar(def totalTiming, def maxTiming, def maxBarWidth) {
+        def roundedTotal = Math.round(totalTiming * 100)
+        def barLength = Math.ceil(maxBarWidth * maxTiming)
+        def bar = FILL * (maxBarWidth - barLength) + SQUARE * (barLength - 1)
+        def formatted = (roundedTotal < 10 ? " " : "") + roundedTotal
+        return bar + " " + formatted + '%'
+    }
+
+    static String formatDuration(long ms) {
+        def hours = TimeUnit.MILLISECONDS.toHours(ms)
+        def minutes = TimeUnit.MILLISECONDS.toMinutes(ms) - TimeUnit.HOURS.toMinutes(hours)
+        def seconds = TimeUnit.MILLISECONDS.toSeconds(ms) - TimeUnit.MINUTES.toSeconds(minutes)
+                - TimeUnit.HOURS.toSeconds(hours)
+        def millis = ms - TimeUnit.MINUTES.toMillis(minutes) - TimeUnit.SECONDS.toMillis(seconds)
+                - TimeUnit.HOURS.toMillis(hours)
+        if (hours > 0) {
+            String.format("%d:%02d:%02d",
+                    hours,
+                    minutes,
+                    seconds
+            )
+        } else {
+            String.format("%d:%02d.%03d",
+                    minutes,
+                    seconds,
+                    millis
+            )
+        }
+    }
+
+    static int getTerminalWidth(int fallback) {
+        // Start by trying to get the `COLUMNS` env variable,
+        // which is swallowed by Gradle most of the time.
+        def cols = System.getenv("COLUMNS")
+        if (cols != null) {
+            return Integer.parseInt(cols, 10)
+        }
+
+        // tput requires $TERM to be set, otherwise it's going to print an error.
+        // This unfortunately means this doesn't work in daemon mode.
+        if (System.getenv("TERM") == null) {
+            return fallback
+        }
+
+        // Totally unportable way of detecting the terminal width on POSIX and OS X.
+        try {
+            Process p = Runtime.getRuntime().exec(
+                    [ "bash", "-c", "tput cols 2> /dev/tty" ] as String[])
+            p.waitFor()
+            def reader = new BufferedReader(new InputStreamReader(p.getInputStream()))
+            def line = reader.readLine()?.trim()
+            if (line != null) Integer.valueOf(line) else fallback
+        } catch (IOException ignored) {
+            fallback
+        }
+    }
+}
+
+class Timing {
+    long ms
+    String path
+    boolean success
+    boolean didWork
+    boolean skipped
+
+    Timing(long ms, String path, boolean success, boolean didWork, boolean skipped) {
+        this.ms = ms
+        this.path = path
+        this.success = success
+        this.didWork = didWork
+        this.skipped = skipped
+    }
+}
+
+gradle.addListener new BuildTimeDetailsListener()
