@@ -26,17 +26,17 @@ public final class SnackBarHelper {
     }
 
     public void showShort(@NonNull View view, @NonNull String message) {
-        createSnakbar(view, message, Snackbar.LENGTH_SHORT)
+        createSnackBar(view, message, Snackbar.LENGTH_SHORT)
                 .show();
     }
 
     public void showLong(@NonNull View view, @NonNull String message) {
-        createSnakbar(view, message, Snackbar.LENGTH_LONG)
+        createSnackBar(view, message, Snackbar.LENGTH_LONG)
                 .show();
     }
 
     @NonNull
-    private Snackbar createSnakbar(@NonNull View view, @NonNull String message, int duration) {
+    private Snackbar createSnackBar(@NonNull View view, @NonNull String message, int duration) {
         Snackbar snackbar = Snackbar.make(view, message, duration);
         ViewGroup group = (ViewGroup) snackbar.getView();
         int color = ContextCompat.getColor(mContext, R.color.primary);
