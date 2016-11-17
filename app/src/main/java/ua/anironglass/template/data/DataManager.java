@@ -35,7 +35,7 @@ public class DataManager {
     @NonNull
     public Observable<List<Photo>> getPhotos() {
         int albumId = mPreferencesHelper.getAlbumId();
-        Timber.d("DataManager::getPhotos, albumId = %d", albumId);
+        Timber.d("Get photos from album %d", albumId);
         return mDatabaseHelper.getPhotos(albumId)
                 .distinct();
     }
@@ -43,7 +43,7 @@ public class DataManager {
     @NonNull
     Observable<Photo> syncPhotos() {
         int albumId = mPreferencesHelper.getAlbumId();
-        Timber.d("DataManager::syncPhotos, albumId = %d", albumId);
+        Timber.d("Sync photos from album %d", albumId);
         return mApiHelper.getPhotos(albumId)
                 .concatMap(mDatabaseHelper::setPhotos);
     }

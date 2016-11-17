@@ -47,7 +47,7 @@ public class BaseActivity extends RxAppCompatActivity {
                     .build();
             sComponentsArray.put(mActivityId, configPersistentComponent);
         } else {
-            Timber.d("Reusing ConfigPersistentComponent id=%d", mActivityId);
+            Timber.d("Reusing ConfigPersistentComponent id = %d", mActivityId);
             configPersistentComponent = sComponentsArray.get(mActivityId);
         }
         mActivityComponent = configPersistentComponent.activityComponent(new ActivityModule(this));
@@ -62,7 +62,7 @@ public class BaseActivity extends RxAppCompatActivity {
     @Override
     protected void onDestroy() {
         if (!isChangingConfigurations()) {
-            Timber.i("Clearing ConfigPersistentComponent id = %d", mActivityId);
+            Timber.d("Clearing ConfigPersistentComponent id = %d", mActivityId);
             sComponentsArray.remove(mActivityId);
         }
         super.onDestroy();

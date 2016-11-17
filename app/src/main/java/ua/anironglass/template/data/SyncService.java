@@ -39,10 +39,10 @@ public class SyncService extends Service {
 
     @Override
     public int onStartCommand(@NonNull Intent intent, int flags, final int startId) {
-        Timber.i("Starting sync...");
+        Timber.d("Starting sync...");
 
         if (!NetworkUtils.isConnected(this)) {
-            Timber.i("Sync canceled, connection not available");
+            Timber.d("Sync canceled, connection not available");
             AndroidComponentUtil.toggleComponent(this, SyncOnConnectionAvailable.class, true);
             stopSelf(startId);
             return START_NOT_STICKY;
@@ -82,7 +82,7 @@ public class SyncService extends Service {
         public void onReceive(Context context, Intent intent) {
             if (intent.getAction().equals(ConnectivityManager.CONNECTIVITY_ACTION)
                     && NetworkUtils.isConnected(context)) {
-                Timber.i("Connection is now available, triggering sync...");
+                Timber.d("Connection is now available, triggering sync...");
                 AndroidComponentUtil.toggleComponent(context, this.getClass(), false);
                 context.startService(getStartIntent(context));
             }

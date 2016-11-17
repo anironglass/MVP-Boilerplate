@@ -29,18 +29,18 @@ class MainPresenter extends BasePresenter<MainMvpView> {
     @Override
     public void attachView(MainMvpView mvpView) {
         super.attachView(mvpView);
-        Timber.d("MainPresenter::attachView");
+        Timber.d("View attached to MainPresenter");
         loadPhotos();
     }
 
     @Override
     public void detachView() {
         super.detachView();
-        Timber.d("MainPresenter::detachView");
+        Timber.d("View detached from MainPresenter");
     }
 
     private void loadPhotos() {
-        Timber.d("MainPresenter::loadPhotos");
+        Timber.d("Starting loading photos");
         checkViewAttached();
         RxUtils.unsubscribe(mLoadPhotosSubscription);
         mLoadPhotosSubscription = mDataManager.getPhotos()
