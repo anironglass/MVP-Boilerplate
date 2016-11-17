@@ -17,6 +17,7 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
 
+        initializeComponent();
         initializeTimber();
     }
 
@@ -25,13 +26,15 @@ public class App extends Application {
         return (App) context.getApplicationContext();
     }
 
+    @NonNull
     public ApplicationComponent getComponent() {
-        if (null == mApplicationComponent) {
-            mApplicationComponent = DaggerApplicationComponent.builder()
-                    .applicationModule(new ApplicationModule(this))
-                    .build();
-        }
         return mApplicationComponent;
+    }
+
+    private void initializeComponent() {
+        mApplicationComponent = DaggerApplicationComponent.builder()
+                .applicationModule(new ApplicationModule(this))
+                .build();
     }
 
     private void initializeTimber() {

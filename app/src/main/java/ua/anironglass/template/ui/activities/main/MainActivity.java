@@ -100,10 +100,6 @@ public class MainActivity extends BaseActivity implements MainMvpView {
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setAdapter(photosAdapter);
         mainPresenter.attachView(this);
-
-        leakCanary.watch(recyclerView);
-        leakCanary.watch(photosAdapter);
-        leakCanary.watch(mainPresenter);
     }
 
 }
