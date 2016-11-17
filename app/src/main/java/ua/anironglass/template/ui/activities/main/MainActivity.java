@@ -21,7 +21,7 @@ import ua.anironglass.template.data.SyncService;
 import ua.anironglass.template.data.model.Photo;
 import ua.anironglass.template.ui.activities.base.BaseActivity;
 import ua.anironglass.template.utils.LeakCanaryHelper;
-import ua.anironglass.template.utils.SnackbarHelper;
+import ua.anironglass.template.utils.SnackBarHelper;
 
 public class MainActivity extends BaseActivity implements MainMvpView {
 
@@ -33,8 +33,7 @@ public class MainActivity extends BaseActivity implements MainMvpView {
     @Inject LeakCanaryHelper leakCanary;
     @Inject MainPresenter mainPresenter;
     @Inject PhotosAdapter photosAdapter;
-    @Inject
-    SnackbarHelper mSnackbarHelper;
+    @Inject SnackBarHelper mSnackBarHelper;
 
     /**
      * Return an Intent to start this Activity.
@@ -88,7 +87,7 @@ public class MainActivity extends BaseActivity implements MainMvpView {
         photosAdapter.addPhotos(photos);
         photosAdapter.notifyDataSetChanged();
 
-        mSnackbarHelper.showShort(
+        mSnackBarHelper.showShort(
                 contentView,
                 String.format(Locale.getDefault(), "Loaded %d photos", photos.size()));
 

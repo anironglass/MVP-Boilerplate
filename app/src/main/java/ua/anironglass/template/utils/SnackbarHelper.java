@@ -15,13 +15,13 @@ import ua.anironglass.template.injection.ActivityContext;
 import ua.anironglass.template.injection.PerActivity;
 
 @PerActivity
-public final class SnackbarHelper {
+public final class SnackBarHelper {
 
     private final Context mContext;
 
     @Inject
     @SuppressWarnings("WeakerAccess")  // Used in DI
-    public SnackbarHelper(@ActivityContext Context context) {
+    public SnackBarHelper(@ActivityContext Context context) {
         mContext = context;
     }
 
