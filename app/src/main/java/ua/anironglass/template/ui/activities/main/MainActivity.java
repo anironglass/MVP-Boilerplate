@@ -28,11 +28,11 @@ public class MainActivity extends BaseActivity implements MainMvpView {
     private static final String EXTRA_TRIGGER_SYNC_FLAG =
             "ua.anironglass.template.ui.activities.main.MainActivity.EXTRA_TRIGGER_SYNC_FLAG";
 
-    @BindView(R.id.recycler_view) RecyclerView recyclerView;
-    @BindView(R.id.content_view) ConstraintLayout contentView;
-    @Inject LeakCanaryHelper leakCanary;
-    @Inject MainPresenter mainPresenter;
-    @Inject PhotosAdapter photosAdapter;
+    @BindView(R.id.recycler_view) RecyclerView mRecyclerView;
+    @BindView(R.id.content_view) ConstraintLayout mContentView;
+    @Inject LeakCanaryHelper mLeakCanary;
+    @Inject MainPresenter mMainPresenter;
+    @Inject PhotosAdapter mPhotosAdapter;
     @Inject SnackBarHelper mSnackBarHelper;
 
     /**
@@ -60,7 +60,7 @@ public class MainActivity extends BaseActivity implements MainMvpView {
             startService(SyncService.getStartIntent(this));
         }
 
-        leakCanary.watch(this);
+        mLeakCanary.watch(this);
     }
 
     @Override
@@ -79,26 +79,26 @@ public class MainActivity extends BaseActivity implements MainMvpView {
     protected void onDestroy() {
         Timber.d("MainActivity destroyed");
         super.onDestroy();
-        mainPresenter.detachView();
+        mMainPresenter.detachView();
     }
 
     @Override
     public void showPhotos(List<Photo> photos) {
-        photosAdapter.addPhotos(photos);
-        photosAdapter.notifyDataSetChanged();
+        mPhotosAdapter.addPhotos(photos);
+        mPhotosAdapter.notifyDataSetChanged();
 
         mSnackBarHelper.showShort(
-                contentView,
+                mContentView,
                 String.format(Locale.getDefault(), "Loaded %d photos", photos.size()));
 
-        leakCanary.watch(photos);
+        mLeakCanary.watch(photos);
     }
 
     private void initializeView() {
         final RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(mLayoutManager);
-        recyclerView.setAdapter(photosAdapter);
-        mainPresenter.attachView(this);
+        mRecyclerView.setLayoutManager(mLayoutManager);
+        mRecyclerView.setAdapter(mPhotosAdapter);
+        mMainPresenter.attachView(this);
     }
 
 }

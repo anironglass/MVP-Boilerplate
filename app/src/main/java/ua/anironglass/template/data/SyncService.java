@@ -20,9 +20,8 @@ import ua.anironglass.template.utils.RxUtils;
 
 public class SyncService extends Service {
 
-    @Inject DataManager dataManager;
+    @Inject DataManager mDataManager;
     private Subscription mSubscription;
-    private SyncOnConnectionAvailable mSyncOnConnectionAvailable;
 
     public static Intent getStartIntent(Context context) {
         return new Intent(context, SyncService.class);
@@ -50,7 +49,7 @@ public class SyncService extends Service {
         }
 
         RxUtils.unsubscribe(mSubscription);
-        mSubscription = dataManager.syncPhotos()
+        mSubscription = mDataManager.syncPhotos()
                 .subscribeOn(Schedulers.io())
                 .subscribe(
                         photo -> { },
