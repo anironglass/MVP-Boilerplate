@@ -85,7 +85,7 @@ The following code analysis tools are set up on this project:
 ./gradlew findbugs
 ```
 
-* [Checkstyle](http://checkstyle.sourceforge.net/): It ensures that the code style follows [our Android code guidelines](https://github.com/ribot/android-guidelines/blob/master/project_and_code_guidelines.md#2-code-guidelines). See our [checkstyle config file](config/quality/checkstyle/checkstyle-config.xml).
+* [Checkstyle](http://checkstyle.sourceforge.net/): It ensures that the code style follows [our Android code guidelines](https://github.com/ribot/android-guidelines/blob/master/project_and_code_guidelines.md). See our [checkstyle config file](config/quality/checkstyle/checkstyle-config.xml).
 
 ```
 ./gradlew checkstyle
@@ -108,15 +108,14 @@ This will run all the code analysis tools and unit tests in the following order:
 
 To quickly start a new project from this boilerplate follow the next steps:
 
-* Download this [repository as a zip](https://github.com/ribot/android-boilerplate/archive/master.zip).
+* Download this [repository as a zip](https://github.com/AnironGlass/MVP-Template/archive/master.zip).
 * Change the package name. 
-  * Rename packages in main, androidTest and test using Android Studio.
-  * In `app/build.gradle` file, `packageName` and `testInstrumentationRunner`.
-  * In `src/main/AndroidManifest.xml` and `src/debug/AndroidManifest.xml`.
+  * Rename packages in `main` and `test` using Android Studio.
+  * In `app/build.gradle` file, `packageName`
+  * In `src/main/AndroidManifest.xml`
+* Change MainActivity and LeakCanary activity labels in `src/res/values/strings.xml`.   
 * Create a new git repository, [see GitHub tutorial](https://help.github.com/articles/adding-an-existing-project-to-github-using-the-command-line/).
 * Replace the example code with your app code following the same architecture.
-* In `app/build.gradle` add the signing config to enable release versions.
-* Add Fabric API key and secret to fabric.properties and uncomment Fabric plugin set up in `app/build.gradle`
 * Update `proguard-rules.pro` to keep models (see TODO in file) and add extra rules to file if needed.
 * Update README with information relevant to the new project.
 * Update LICENSE to match the requirements of the new project.
