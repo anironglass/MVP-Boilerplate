@@ -2,6 +2,7 @@ package ua.anironglass.template;
 
 import android.app.Application;
 import android.content.Context;
+import android.os.StrictMode;
 import android.support.annotation.NonNull;
 
 import timber.log.Timber;
@@ -15,6 +16,7 @@ public class App extends Application {
 
     @Override
     public void onCreate() {
+        initializeStrictMode();
         super.onCreate();
 
         initializeTimber();
@@ -32,6 +34,20 @@ public class App extends Application {
                     .build();
         }
         return mApplicationComponent;
+    }
+
+    private void initializeStrictMode() {
+        if (BuildConfig.DEBUG) {
+            StrictMode.ThreadPolicy threadPolicy = new StrictMode.ThreadPolicy.Builder()
+                    .detectAll()
+                    .build();
+            StrictMode.setThreadPolicy(threadPolicy);
+
+            StrictMode.VmPolicy vmPolicy = new StrictMode.VmPolicy.Builder()
+                    .detectAll()
+                    .build();
+            StrictMode.setVmPolicy(vmPolicy);
+        }
     }
 
     private void initializeTimber() {
