@@ -22,13 +22,14 @@ Libraries and tools included:
 - [Truth](https://github.com/google/truth)
 - [Checkstyle](http://checkstyle.sourceforge.net/), [PMD](https://pmd.github.io/) and [Findbugs](http://findbugs.sourceforge.net/) for code analysis
 - [Dexcount Gradle Plugin](https://github.com/KeepSafe/dexcount-gradle-plugin)
+- Checks for dependencies updates with [Gradle Versions Plugin](https://github.com/ben-manes/gradle-versions-plugin)
 
 ## Requirements
 
 - JDK 1.8
-- [Android SDK](http://developer.android.com/sdk/index.html).
-- Android Nougat [(API 25) ](http://developer.android.com/tools/revisions/platforms.html).
-- Latest Android SDK Tools and build tools.
+- Android SDK
+- Android Nougat (API 25)
+- Latest Android SDK Tools and build tools
 
 ## Architecture
 
@@ -103,6 +104,13 @@ This will run all the code analysis tools and unit tests in the following order:
 
 ![Check Diagram](images/check-task-diagram.png)
  
+### Checks for dependencies updates
+
+To check for dependencies updates use following task:
+
+```
+./gradlew dependencyUpdates
+```
 
 ## New project setup 
 
