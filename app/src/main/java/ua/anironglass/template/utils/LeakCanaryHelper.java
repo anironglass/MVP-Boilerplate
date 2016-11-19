@@ -38,6 +38,7 @@ public final class LeakCanaryHelper {
         if (BuildConfig.DEBUG) {
             // Ignore known Android SDK leaks
             ExcludedRefs excludedRefs = AndroidExcludedRefs.createAppDefaults()
+                    .instanceField("android.database.ContentObserver$Transport", "mContentObserver")
                     .build();
 
             LeakDirectoryProvider provider = new DefaultLeakDirectoryProvider(context);
