@@ -84,12 +84,12 @@ public class MainActivity extends BaseActivity implements MainMvpView {
 
     @Override
     public void showPhotos(List<Photo> photos) {
-        mPhotosAdapter.addPhotos(photos);
-        mPhotosAdapter.notifyDataSetChanged();
+        mPhotosAdapter.setPhotos(photos);
 
+        int loadedPhotosCount = photos.size();
         mSnackBarHelper.showShort(
                 mContentView,
-                String.format(Locale.getDefault(), "Loaded %d photos", photos.size()));
+                String.format(Locale.getDefault(), "Loaded %d photos", loadedPhotosCount));
 
         mLeakCanary.watch(photos);
     }
@@ -98,7 +98,9 @@ public class MainActivity extends BaseActivity implements MainMvpView {
         final RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mPhotosAdapter);
+
         mMainPresenter.attachView(this);
+        mMainPresenter.loadPhotos();
     }
 
 }

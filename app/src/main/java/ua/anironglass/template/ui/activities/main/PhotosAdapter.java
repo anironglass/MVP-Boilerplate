@@ -27,7 +27,7 @@ import ua.anironglass.template.injection.PerActivity;
 @PerActivity
 class PhotosAdapter extends RecyclerView.Adapter<PhotosAdapter.ViewHolder>  {
 
-    private ArrayList<Photo> mPhotos = new ArrayList<>();
+    private List<Photo> mPhotos = new ArrayList<>();
     private RequestManager mGlide;
 
     @Inject
@@ -60,8 +60,9 @@ class PhotosAdapter extends RecyclerView.Adapter<PhotosAdapter.ViewHolder>  {
                 : -1;
     }
 
-    void addPhotos(List<Photo> photos) {
-        mPhotos.addAll(photos);
+    void setPhotos(List<Photo> photos) {
+        mPhotos = photos;
+        notifyDataSetChanged();
     }
 
 
