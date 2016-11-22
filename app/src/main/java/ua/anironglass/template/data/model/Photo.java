@@ -8,6 +8,8 @@ import com.google.gson.Gson;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.Locale;
+
 @AutoValue
 public abstract class Photo implements Parcelable {
 
@@ -23,6 +25,14 @@ public abstract class Photo implements Parcelable {
 
     public static TypeAdapter<Photo> typeAdapter(Gson gson) {
         return new AutoValue_Photo.GsonTypeAdapter(gson);
+    }
+
+    public String getText() {
+        return String.format(
+                Locale.getDefault(),
+                "[%d] %s",
+                getId(),
+                getTitle());
     }
 
     @AutoValue.Builder

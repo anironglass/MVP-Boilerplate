@@ -34,4 +34,4 @@ ext {
     config = "$rootProject.projectDir/config/"
 }
 
-apply from: "$config/buildtimedetails.gradle"
+apply from: "$config/build_time_details.gradle"

@@ -1,6 +1,9 @@
 import java.util.concurrent.TimeUnit
 
 // Log timings per task.
+
+// Replace with Build Time Tracker Plugin once it's fixed bars displaying issue
+// https://github.com/passy/build-time-tracker-plugin
 class BuildTimeDetailsListener implements TaskExecutionListener, BuildListener {
     def static final THRESHOLD = 50
     def static final SQUARE = "*"

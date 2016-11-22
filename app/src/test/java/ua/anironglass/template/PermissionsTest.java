@@ -16,9 +16,17 @@ import static com.google.common.truth.Truth.assertThat;
 @Config(manifest = Config.NONE, sdk = DefaultConfig.EMULATE_SDK)
 public final class PermissionsTest {
 
-    private static final Object[] EXPECTED_PERMISSIONS = {
+    private static final Object[] EXPECTED_RELEASE_PERMISSIONS = {
             "android.permission.INTERNET",
             "android.permission.ACCESS_NETWORK_STATE",
+    };
+
+    private static final Object[] EXPECTED_DEBUG_PERMISSIONS = {
+            "android.permission.INTERNET",
+            "android.permission.ACCESS_NETWORK_STATE",
+            "android.permission.DISABLE_KEYGUARD",
+            "android.permission.WAKE_LOCK",
+            "android.permission.READ_LOGS",
             "android.permission.READ_EXTERNAL_STORAGE",
             "android.permission.WRITE_EXTERNAL_STORAGE"
     };
@@ -34,8 +42,15 @@ public final class PermissionsTest {
                 null
         );
 
+        Object[] expectedPermissions;
+        if (BuildConfig.DEBUG) {
+            expectedPermissions = EXPECTED_DEBUG_PERMISSIONS;
+        } else {
+            expectedPermissions = EXPECTED_RELEASE_PERMISSIONS;
+        }
+
         assertThat(manifest.getUsedPermissions())
-                .containsExactly(EXPECTED_PERMISSIONS);
+                .containsExactly(expectedPermissions);
     }
 
 }

@@ -77,8 +77,7 @@ class PhotosAdapter extends RecyclerView.Adapter<PhotosAdapter.ViewHolder>  {
         }
 
         void bind(@NonNull Photo photo) {
-            String title = "[" + photo.getId() + "] " + photo.getTitle();
-            textTitle.setText(title);
+            textTitle.setText(photo.getText());
             mGlide.load(photo.getThumbnailUrl())
                     .into(imageThumbnail);
         }

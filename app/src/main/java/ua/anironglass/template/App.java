@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Context;
 import android.os.StrictMode;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 import timber.log.Timber;
 import ua.anironglass.template.injection.components.ApplicationComponent;
@@ -34,6 +35,11 @@ public class App extends Application {
                     .build();
         }
         return mApplicationComponent;
+    }
+
+    // Needed to replace the component with a test specific one
+    public void setComponent(@Nullable ApplicationComponent applicationComponent) {
+        mApplicationComponent = applicationComponent;
     }
 
     private void initializeStrictMode() {

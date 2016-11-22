@@ -1,39 +1,36 @@
+ext {
+    // App dependencies
+    AUTO_VALUE_VERSION = '1.3'
+    AUTO_VALUE_GSON_VERSION = '0.4.4'
+    AUTO_VALUE_PARCEL_VERSION = '0.2.5'
+    BUTTER_KNIFE_VERSION = '8.4.0'
+    CONSTRAIN_LAYOUT_VERSION = '1.0.0-beta4'
+    DAGGER2_VERSION = '2.7'
+    DEXMAKER_VERSION = '1.4'
+    ESPRESSO_VERSION = '2.2.2'
+    FIND_BUGS_VERSION = '3.0.1'
+    GLIDE_VERSION = '3.7.0'
+    JAVA_POET_VERSION = '1.8.0'
+    JAVAX_VERSION = '10.0-b28'
+    JUNIT_VERSION = '4.12'
+    LEAK_CANARY_VERSION = '1.5'
+    MOCKITO_VERSION = '1.10.19'
+    RETROFIT2_VERSION = '2.1.0'
+    ROBOLECTRIC_VERSION = '3.1.4'
+    RXANDROID_VERSION = '1.2.1'
+    RXJAVA_VERSION = '1.2.2'
+    RXLIFECYCLE_VERSION = '1.0'
+    SQL_BRITE_VERSION = '0.8.0'
+    SUPPORT_LIBRARY_VERSION = '25.0.1'
+    TEST_RUNNER_VERSION = '0.5'
+    TIMBER_VERSION = '4.3.1'
+    TRUTH_VERSION = '0.30'
+}
+
 android {
-    compileSdkVersion 25
-    buildToolsVersion '25.0'
-
-    defaultConfig {
-        minSdkVersion 14
-        targetSdkVersion 25
-
-        versionCode 1000
-        // Major -> Millions, Minor -> Thousands, Bugfix -> Hundreds. E.g 1.3.72 == 1,003,072
-        versionName '0.1.0'
-
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
-        vectorDrawables.useSupportLibrary = true
-    }
-
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
-    }
-
-    buildTypes {
-        release {
-            minifyEnabled true
-            shrinkResources true
-            zipAlignEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-
-        debug {
-            minifyEnabled false
-            versionNameSuffix "_debug"
-            testCoverageEnabled true
-            debuggable true
-        }
     }
 
     // Suppress Lint errors
@@ -43,37 +40,13 @@ android {
 
     // Resolve gradle conflicts with dependencies
     configurations.all {
-        resolutionStrategy.force 'com.google.code.findbugs:jsr305:3.0.1'
+        resolutionStrategy.force "com.android.support:appcompat-v7:$SUPPORT_LIBRARY_VERSION"
+        resolutionStrategy.force "com.android.support:design:$SUPPORT_LIBRARY_VERSION"
+        resolutionStrategy.force "com.google.code.findbugs:jsr305:$FIND_BUGS_VERSION"
     }
 }
 
 // Log out test results to console
 tasks.matching {it instanceof Test}.all {
     testLogging.events = ["failed", "passed", "skipped"]
-}
-
-ext {
-    // App dependencies
-    AUTO_VALUE_VERSION = '1.3'
-    AUTO_VALUE_GSON_VERSION = '0.4.4'
-    AUTO_VALUE_PARCEL_VERSION = '0.2.5'
-    BUTTER_KNIFE_VERSION = '8.4.0'
-    CONSTRAIN_LAYOUT_VERSION = '1.0.0-beta4'
-    DAGGER2_VERSION = '2.7'
-    ESPRESSO_VERSION = '2.2.2'
-    GLIDE_VERSION = '3.7.0'
-    JAVA_POET_VERSION = '1.8.0'
-    JAVAX_VERSION = '10.0-b28'
-    JUNIT_VERSION = '4.12'
-    LEAK_CANARY_VERSION = '1.5'
-    MOCKITO_VERSION = '2.2.21'
-    RETROFIT2_VERSION = '2.1.0'
-    ROBOLECTRIC_VERSION = '3.1.4'
-    RXANDROID_VERSION = '1.2.1'
-    RXJAVA_VERSION = '1.2.2'
-    RXLIFECYCLE_VERSION = '1.0'
-    SQL_BRITE_VERSION = '0.8.0'
-    SUPPORT_LIBRARY_VERSION = '25.0.1'
-    TIMBER_VERSION = '4.3.1'
-    TRUTH_VERSION = '0.30'
 }

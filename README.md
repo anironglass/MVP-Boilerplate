@@ -118,9 +118,9 @@ To quickly start a new project from this boilerplate follow the next steps:
 
 * Download this [repository as a zip](https://github.com/AnironGlass/MVP-Template/archive/master.zip).
 * Change the package name. 
-  * Rename packages in `main` and `test` using Android Studio.
-  * In `app/build.gradle` file, `packageName`
-  * In `src/main/AndroidManifest.xml`
+  * Rename packages in `androidTest`, `main`, `sharedTest` and `test` using Android Studio.
+  * In `app/build.gradle` file, `applicationId`.
+  * In `src/main/AndroidManifest.xml` and `src/debug/AndroidManifest.xml`.
 * Change MainActivity and LeakCanary activity labels in `src/res/values/strings.xml`.   
 * Create a new git repository, [see GitHub tutorial](https://help.github.com/articles/adding-an-existing-project-to-github-using-the-command-line/).
 * Replace the example code with your app code following the same architecture.
