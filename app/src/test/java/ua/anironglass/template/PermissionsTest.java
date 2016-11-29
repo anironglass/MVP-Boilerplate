@@ -6,6 +6,7 @@ import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 import org.robolectric.manifest.AndroidManifest;
 import org.robolectric.res.Fs;
+import org.robolectric.res.FsFile;
 
 import ua.anironglass.template.utils.DefaultConfig;
 
@@ -16,12 +17,12 @@ import static com.google.common.truth.Truth.assertThat;
 @Config(manifest = Config.NONE, sdk = DefaultConfig.EMULATE_SDK)
 public final class PermissionsTest {
 
-    private static final Object[] EXPECTED_RELEASE_PERMISSIONS = {
+    private static final String[] EXPECTED_RELEASE_PERMISSIONS = {
             "android.permission.INTERNET",
             "android.permission.ACCESS_NETWORK_STATE",
     };
 
-    private static final Object[] EXPECTED_DEBUG_PERMISSIONS = {
+    private static final String[] EXPECTED_DEBUG_PERMISSIONS = {
             "android.permission.INTERNET",
             "android.permission.ACCESS_NETWORK_STATE",
             "android.permission.DISABLE_KEYGUARD",
@@ -39,25 +40,21 @@ public final class PermissionsTest {
 
 
     @Test
-    public void shouldMatchReleasePermissions() {
-        AndroidManifest manifest = new AndroidManifest(
-                Fs.fileFromPath(MERGED_RELEASE_MANIFEST_FILE),
-                null,
-                null
-        );
-        assertThat(manifest.getUsedPermissions())
-                .containsExactly(EXPECTED_RELEASE_PERMISSIONS);
-    }
+    public void shouldMatchPermissions() {
+        FsFile mergedManifestFile;
+        Object[] expectedPermissions;
 
-    @Test
-    public void shouldMatchDebugPermissions() {
-        AndroidManifest manifest = new AndroidManifest(
-                Fs.fileFromPath(MERGED_DEBUG_MANIFEST_FILE),
-                null,
-                null
-        );
+        if (BuildConfig.DEBUG) {
+            mergedManifestFile = Fs.fileFromPath(MERGED_DEBUG_MANIFEST_FILE);
+            expectedPermissions = EXPECTED_DEBUG_PERMISSIONS;
+        } else {
+            mergedManifestFile = Fs.fileFromPath(MERGED_RELEASE_MANIFEST_FILE);
+            expectedPermissions = EXPECTED_RELEASE_PERMISSIONS;
+        }
+
+        AndroidManifest manifest = new AndroidManifest(mergedManifestFile, null, null);
         assertThat(manifest.getUsedPermissions())
-                .containsExactly(EXPECTED_DEBUG_PERMISSIONS);
+                .containsExactly(expectedPermissions);
     }
 
 }
