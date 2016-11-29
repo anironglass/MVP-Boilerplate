@@ -31,26 +31,33 @@ public final class PermissionsTest {
             "android.permission.WRITE_EXTERNAL_STORAGE"
     };
 
-    private static final String MERGED_MANIFEST_FILE =
+    private static final String MERGED_RELEASE_MANIFEST_FILE =
+            "build/intermediates/manifests/full/release/AndroidManifest.xml";
+
+    private static final String MERGED_DEBUG_MANIFEST_FILE =
             "build/intermediates/manifests/full/debug/AndroidManifest.xml";
 
+
     @Test
-    public void shouldMatchPermissions() {
+    public void shouldMatchReleasePermissions() {
         AndroidManifest manifest = new AndroidManifest(
-                Fs.fileFromPath(MERGED_MANIFEST_FILE),
+                Fs.fileFromPath(MERGED_RELEASE_MANIFEST_FILE),
                 null,
                 null
         );
-
-        Object[] expectedPermissions;
-        if (BuildConfig.DEBUG) {
-            expectedPermissions = EXPECTED_DEBUG_PERMISSIONS;
-        } else {
-            expectedPermissions = EXPECTED_RELEASE_PERMISSIONS;
-        }
-
         assertThat(manifest.getUsedPermissions())
-                .containsExactly(expectedPermissions);
+                .containsExactly(EXPECTED_RELEASE_PERMISSIONS);
+    }
+
+    @Test
+    public void shouldMatchDebugPermissions() {
+        AndroidManifest manifest = new AndroidManifest(
+                Fs.fileFromPath(MERGED_DEBUG_MANIFEST_FILE),
+                null,
+                null
+        );
+        assertThat(manifest.getUsedPermissions())
+                .containsExactly(EXPECTED_DEBUG_PERMISSIONS);
     }
 
 }
