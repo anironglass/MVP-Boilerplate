@@ -17,9 +17,9 @@ public class App extends Application {
 
     @Override
     public void onCreate() {
-        initializeStrictMode();
         super.onCreate();
 
+        initializeStrictMode();
         initializeTimber();
     }
 
