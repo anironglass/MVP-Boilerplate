@@ -20,7 +20,6 @@ import ua.anironglass.template.R;
 import ua.anironglass.template.data.SyncService;
 import ua.anironglass.template.data.model.Photo;
 import ua.anironglass.template.ui.activities.base.BaseActivity;
-import ua.anironglass.template.utils.LeakCanaryHelper;
 import ua.anironglass.template.utils.SnackBarHelper;
 
 public class MainActivity extends BaseActivity implements MainMvpView {
@@ -30,7 +29,6 @@ public class MainActivity extends BaseActivity implements MainMvpView {
 
     @BindView(R.id.recycler_view) RecyclerView mRecyclerView;
     @BindView(R.id.content_view) ConstraintLayout mContentView;
-    @Inject LeakCanaryHelper mLeakCanary;
     @Inject MainPresenter mMainPresenter;
     @Inject PhotosAdapter mPhotosAdapter;
     @Inject SnackBarHelper mSnackBarHelper;
@@ -59,8 +57,6 @@ public class MainActivity extends BaseActivity implements MainMvpView {
         if (getIntent().getBooleanExtra(EXTRA_TRIGGER_SYNC_FLAG, true)) {
             startService(SyncService.getStartIntent(this));
         }
-
-        mLeakCanary.watch(this);
     }
 
     @Override
@@ -90,8 +86,6 @@ public class MainActivity extends BaseActivity implements MainMvpView {
         mSnackBarHelper.showShort(
                 mContentView,
                 String.format(Locale.getDefault(), "Loaded %d photos", loadedPhotosCount));
-
-        mLeakCanary.watch(photos);
     }
 
     private void initializeView() {

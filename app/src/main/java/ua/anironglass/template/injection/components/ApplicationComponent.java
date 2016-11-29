@@ -11,7 +11,6 @@ import ua.anironglass.template.data.SyncService;
 import ua.anironglass.template.data.local.PreferencesHelper;
 import ua.anironglass.template.injection.ApplicationContext;
 import ua.anironglass.template.injection.modules.ApplicationModule;
-import ua.anironglass.template.utils.LeakCanaryHelper;
 import ua.anironglass.template.utils.RxEventBus;
 
 @Singleton
@@ -24,7 +23,6 @@ public interface ApplicationComponent {
     Application application();
     DataManager dataManager();
     RxEventBus eventBus();
-    LeakCanaryHelper leakCanary();
     PreferencesHelper preferencesHelper();
 
 }
