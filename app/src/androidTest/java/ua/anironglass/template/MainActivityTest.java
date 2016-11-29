@@ -15,9 +15,9 @@ import org.junit.runner.RunWith;
 import java.util.List;
 
 import rx.Observable;
+import ua.anironglass.template.common.TestComponentRule;
+import ua.anironglass.template.common.TestDataFactory;
 import ua.anironglass.template.data.model.Photo;
-import ua.anironglass.template.test.common.TestComponentRule;
-import ua.anironglass.template.test.common.TestDataFactory;
 import ua.anironglass.template.ui.activities.main.MainActivity;
 
 import static android.support.test.espresso.Espresso.onView;

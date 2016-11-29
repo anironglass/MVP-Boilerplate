@@ -1,4 +1,4 @@
-package ua.anironglass.template.test.common;
+package ua.anironglass.template.common;
 
 import java.util.ArrayList;
 import java.util.List;

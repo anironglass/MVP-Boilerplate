@@ -1,4 +1,4 @@
-package ua.anironglass.template.test.common.injection.module;
+package ua.anironglass.template.common.injection.module;
 
 import android.app.Application;
 import android.content.Context;

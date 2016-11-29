@@ -1,4 +1,4 @@
-package ua.anironglass.template.test.common;
+package ua.anironglass.template.common;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -8,10 +8,10 @@ import org.junit.runner.Description;
 import org.junit.runners.model.Statement;
 
 import ua.anironglass.template.App;
+import ua.anironglass.template.common.injection.component.DaggerTestComponent;
+import ua.anironglass.template.common.injection.component.TestComponent;
+import ua.anironglass.template.common.injection.module.ApplicationTestModule;
 import ua.anironglass.template.data.DataManager;
-import ua.anironglass.template.test.common.injection.component.DaggerTestComponent;
-import ua.anironglass.template.test.common.injection.component.TestComponent;
-import ua.anironglass.template.test.common.injection.module.ApplicationTestModule;
 
 
 /**
