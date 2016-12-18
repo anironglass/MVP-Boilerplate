@@ -38,9 +38,9 @@ public class DatabaseHelper {
 
     public Observable<Photo> setPhotos(final Collection<Photo> newPhotos) {
         return Observable.create(new SavePhotosObservable(newPhotos))
-                .doOnNext(photo -> Timber.d(
-                        LogHelper.attachThreadName("Saved local photo, id = %d"),
-                        photo.getId()));
+                .doOnCompleted(() -> Timber.d(
+                        LogHelper.attachThreadName("Saved %d photos to local cache"),
+                        newPhotos.size()));
     }
 
     public Observable<List<Photo>> getPhotos(@IntRange(from = 1, to = 100) int albumId) {
@@ -50,7 +50,8 @@ public class DatabaseHelper {
                         + " WHERE " + Database.PhotosTable.COLUMN_ALBUM_ID + "=" + albumId)
                 .mapToList(Database.PhotosTable::parseCursor)
                 .doOnNext(photos -> Timber.d(
-                        LogHelper.attachThreadName("Loaded local photos, albumId = %d"),
+                        LogHelper.attachThreadName("Loaded %d local cached photos [album = %d]"),
+                        photos.size(),
                         albumId));
     }
 

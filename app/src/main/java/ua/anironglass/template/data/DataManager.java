@@ -60,7 +60,8 @@ public class DataManager {
         return mApiService.getPhotos(albumId)
                 .subscribeOn(Schedulers.io())
                 .doOnNext(photos -> Timber.d(
-                        LogHelper.attachThreadName("Loaded remote photos, albumId = %d"),
+                        LogHelper.attachThreadName("Loaded %d remote photos from server [album = %d]"),
+                        photos.size(),
                         albumId))
                 .retry(RETRY_COUNT_FOR_REQUEST)
                 .timeout(TIMEOUT_IN_SECONDS, TimeUnit.SECONDS);
