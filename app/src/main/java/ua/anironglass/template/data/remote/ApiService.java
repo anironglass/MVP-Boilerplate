@@ -18,7 +18,6 @@ import retrofit2.http.Path;
 import rx.Observable;
 import ua.anironglass.template.BuildConfig;
 import ua.anironglass.template.data.model.Photo;
-import ua.anironglass.template.utils.AutoValueGsonTypeAdapterFactory;
 
 
 public interface ApiService {
@@ -57,7 +56,7 @@ public interface ApiService {
         private static OkHttpClient newOkHttpClient() {
             HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
             if (BuildConfig.DEBUG) {
-                loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+                loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BASIC);
             } else {
                 loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.NONE);
             }
@@ -72,7 +71,7 @@ public interface ApiService {
         @NonNull
         private static Gson newGson() {
             return new GsonBuilder()
-                    .registerTypeAdapterFactory(AutoValueGsonTypeAdapterFactory.create())
+                    .excludeFieldsWithoutExposeAnnotation()
                     .create();
         }
 
