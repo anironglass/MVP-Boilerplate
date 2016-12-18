@@ -36,14 +36,14 @@ android {
             debuggable true
         }
 
-        // Share common tests between unit test and instrumental test
         sourceSets {
-            def sharedTestDir = 'src/sharedTest/java'
-            test {
-                java.srcDir sharedTestDir
-            }
+            // Share common test classes between unit test and instrumental test
+            def commonTestDir = "src/commonTest/java/"
             androidTest {
-                java.srcDir sharedTestDir
+                java.srcDirs += commonTestDir
+            }
+            test {
+                java.srcDirs += commonTestDir
             }
         }
     }
