@@ -16,7 +16,6 @@ import ua.anironglass.template.data.local.DatabaseHelper;
 import ua.anironglass.template.data.local.PreferencesHelper;
 import ua.anironglass.template.data.model.Photo;
 import ua.anironglass.template.data.remote.ApiService;
-import ua.anironglass.template.utils.LogHelper;
 
 
 @Singleton
@@ -60,7 +59,8 @@ public class DataManager {
         return mApiService.getPhotos(albumId)
                 .subscribeOn(Schedulers.io())
                 .doOnNext(photos -> Timber.d(
-                        LogHelper.attachThreadName("Loaded %d remote photos from server [album = %d]"),
+                        "[%s] Loaded %d remote photos from server (album = %d)",
+                        Thread.currentThread().getName(),
                         photos.size(),
                         albumId))
                 .retry(RETRY_COUNT_FOR_REQUEST)

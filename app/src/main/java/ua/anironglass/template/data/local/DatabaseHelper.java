@@ -17,7 +17,6 @@ import rx.Subscriber;
 import rx.schedulers.Schedulers;
 import timber.log.Timber;
 import ua.anironglass.template.data.model.Photo;
-import ua.anironglass.template.utils.LogHelper;
 
 
 @Singleton
@@ -39,7 +38,8 @@ public class DatabaseHelper {
     public Observable<Photo> setPhotos(final Collection<Photo> newPhotos) {
         return Observable.create(new SavePhotosObservable(newPhotos))
                 .doOnCompleted(() -> Timber.d(
-                        LogHelper.attachThreadName("Saved %d photos to local cache"),
+                        "[%s] Saved %d photos to local cache",
+                        Thread.currentThread().getName(),
                         newPhotos.size()));
     }
 
@@ -50,7 +50,8 @@ public class DatabaseHelper {
                         + " WHERE " + Database.PhotosTable.COLUMN_ALBUM_ID + "=" + albumId)
                 .mapToList(Database.PhotosTable::parseCursor)
                 .doOnNext(photos -> Timber.d(
-                        LogHelper.attachThreadName("Loaded %d local cached photos [album = %d]"),
+                        "[%s] Loaded %d local cached photos (album = %d)",
+                        Thread.currentThread().getName(),
                         photos.size(),
                         albumId));
     }
