@@ -33,10 +33,15 @@ class BuildTimeDetailsListener implements TaskExecutionListener, BuildListener {
         if (timings.size() == 0) {
             return
         }
-        timings = timings.sort(false, { it.ms })
 
         printf "Build time details:\n\n"
         formatTable(timings)
+        printf "\n"
+        if (result.failure != null) {
+            printf "== BUILD FAILED ==\n\n"
+        } else {
+            printf "== BUILD SUCCESSFUL ==\n\n"
+        }
     }
 
     @Override
