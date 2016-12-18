@@ -9,12 +9,14 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
 import rx.Observable;
+import ua.anironglass.template.BuildConfig;
 import ua.anironglass.template.data.model.Photo;
 import ua.anironglass.template.utils.AutoValueGsonTypeAdapterFactory;
 
@@ -43,20 +45,35 @@ public interface ApiService {
 
         @NonNull
         private static Retrofit getRetrofit() {
-            OkHttpClient okHttpClient = new OkHttpClient.Builder()
+            return new Retrofit.Builder()
+                    .baseUrl(BASE_URL)
+                    .client(newOkHttpClient())
+                    .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                    .addConverterFactory(GsonConverterFactory.create(newGson()))
+                    .build();
+        }
+
+        @NonNull
+        private static OkHttpClient newOkHttpClient() {
+            HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
+            if (BuildConfig.DEBUG) {
+                loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+            } else {
+                loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.NONE);
+            }
+            return new OkHttpClient.Builder()
                     .connectTimeout(CONNECT_TIMEOUT, TimeUnit.SECONDS)
                     .writeTimeout(WRITE_TIMEOUT, TimeUnit.SECONDS)
                     .readTimeout(READ_TIMEOUT, TimeUnit.SECONDS)
+                    .addInterceptor(loggingInterceptor)
                     .build();
-            Gson gson = new GsonBuilder()
+        }
+
+        @NonNull
+        private static Gson newGson() {
+            return new GsonBuilder()
                     .registerTypeAdapterFactory(AutoValueGsonTypeAdapterFactory.create())
                     .create();
-            return new Retrofit.Builder()
-                    .baseUrl(BASE_URL)
-                    .client(okHttpClient)
-                    .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-                    .addConverterFactory(GsonConverterFactory.create(gson))
-                    .build();
         }
 
     }
