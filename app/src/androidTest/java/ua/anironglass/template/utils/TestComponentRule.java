@@ -1,4 +1,4 @@
-package ua.anironglass.template.common;
+package ua.anironglass.template.utils;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
