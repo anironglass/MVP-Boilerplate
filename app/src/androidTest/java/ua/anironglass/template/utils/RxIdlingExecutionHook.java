@@ -2,15 +2,13 @@ package ua.anironglass.template.utils;
 
 import android.support.annotation.NonNull;
 
-import rx.Observable;
-import rx.Subscription;
-import rx.plugins.RxJavaObservableExecutionHook;
+import rx.plugins.RxJavaHooks;
 
 /**
  * RxJava Observable execution hook that handles updating the active subscription
  * count for a given Espresso RxIdlingResource.
  */
-public final class RxIdlingExecutionHook extends RxJavaObservableExecutionHook {
+public final class RxIdlingExecutionHook {
 
     private RxIdlingResource mRxIdlingResource;
 
@@ -18,22 +16,24 @@ public final class RxIdlingExecutionHook extends RxJavaObservableExecutionHook {
         mRxIdlingResource = rxIdlingResource;
     }
 
-    @Override
-    public <T> Observable.OnSubscribe<T> onSubscribeStart(
-            Observable<? extends T> observableInstance, Observable.OnSubscribe<T> onSubscribe) {
-        mRxIdlingResource.incrementActiveSubscriptionsCount();
-        return super.onSubscribeStart(observableInstance, onSubscribe);
+    public void setHook() {
+        RxJavaHooks.reset();
+        RxJavaHooks.setOnObservableStart((observable, onSubscribe) -> {
+            mRxIdlingResource.incrementActiveSubscriptionsCount();
+            return onSubscribe;
+        });
+        RxJavaHooks.setOnObservableSubscribeError(throwable -> {
+            mRxIdlingResource.decrementActiveSubscriptionsCount();
+            return throwable;
+        });
+        RxJavaHooks.setOnObservableReturn(subscription -> {
+            mRxIdlingResource.decrementActiveSubscriptionsCount();
+            return subscription;
+        });
     }
 
-    @Override
-    public <T> Throwable onSubscribeError(Throwable e) {
-        mRxIdlingResource.decrementActiveSubscriptionsCount();
-        return super.onSubscribeError(e);
-    }
-
-    @Override
-    public <T> Subscription onSubscribeReturn(Subscription subscription) {
-        mRxIdlingResource.decrementActiveSubscriptionsCount();
-        return super.onSubscribeReturn(subscription);
+    public void removeHook() {
+        RxJavaHooks.clear();
+        RxJavaHooks.reset();
     }
 }

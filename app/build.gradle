@@ -68,9 +68,7 @@ dependencies {
     compile "com.jakewharton:butterknife:$BUTTER_KNIFE_VERSION"
     compile "com.jakewharton.timber:timber:$TIMBER_VERSION"
     compile "com.squareup.okhttp3:logging-interceptor:$OKHTTP3_VERSION"
-    compile ("com.squareup.sqlbrite:sqlbrite:$SQL_BRITE_VERSION") {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    }
+    compile "com.squareup.sqlbrite:sqlbrite:$SQL_BRITE_VERSION"
     compile "com.squareup.retrofit2:retrofit:$RETROFIT2_VERSION"
     compile "com.squareup.retrofit2:adapter-rxjava:$RETROFIT2_VERSION"
     compile "com.squareup.retrofit2:converter-gson:$RETROFIT2_VERSION"
@@ -91,14 +89,12 @@ dependencies {
 
     // Instrumentation test dependencies
     androidTestCompile "com.android.support:support-annotations:$SUPPORT_LIBRARY_VERSION"
-    androidTestCompile("com.android.support.test.espresso:espresso-contrib:$ESPRESSO_VERSION") {
-        exclude group: 'com.android.support', module: 'appcompat'
-        exclude group: 'com.android.support', module: 'support-v4'
-        exclude group: 'com.android.support', module: 'recyclerview-v7'
-    }
+    androidTestCompile "com.android.support.test.espresso:espresso-contrib:$ESPRESSO_VERSION"
     androidTestCompile "com.android.support.test.espresso:espresso-core:$ESPRESSO_VERSION"
-    androidTestCompile "com.android.support.test:rules:$TEST_RUNNER_VERSION"
-    androidTestCompile "com.android.support.test:runner:$TEST_RUNNER_VERSION"
+    androidTestCompile "com.android.support.test.espresso:espresso-idling-resource:$ESPRESSO_VERSION"
+    androidTestCompile "com.android.support.test.espresso:espresso-intents:$ESPRESSO_VERSION"
+    androidTestCompile "com.android.support.test:rules:$SUPPORT_TEST_RUNNER_VERSION"
+    androidTestCompile "com.android.support.test:runner:$SUPPORT_TEST_RUNNER_VERSION"
     androidTestCompile "junit:junit:$JUNIT_VERSION"
     androidTestCompile "org.droidparts.dexmaker:dexmaker-mockito:$DEXMAKER_VERSION"
     androidTestCompile "org.mockito:mockito-core:$MOCKITO_VERSION"

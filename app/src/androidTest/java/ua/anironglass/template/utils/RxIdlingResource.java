@@ -11,7 +11,7 @@ import timber.log.Timber;
  * This class must be used with RxIdlingExecutionHook.
  * Before registering this idling resource you must:
  * 1. Create an instance of RxIdlingExecutionHook by passing an instance of this class.
- * 2. Register RxIdlingExecutionHook with the RxJavaPlugins using registerObservableExecutionHook()
+ * 2. Register hook using setHook()
  * 3. Register this idle resource with Espresso using Espresso.registerIdlingResources()
  */
 public final class RxIdlingResource implements IdlingResource {
