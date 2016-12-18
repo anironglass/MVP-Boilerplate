@@ -9,14 +9,6 @@ dependencyUpdates.resolutionStrategy = {
             if (rejected) {
                 selection.reject('Release candidate')
             }
-
-            // Fix issues with Mockito 2.x.x
-            // Replace once it's solved
-            if (selection.candidate.group == 'org.mockito'
-                    && selection.candidate.module == 'mockito-core'
-                    && selection.candidate.version != '1.10.19') {
-                selection.reject("Don't update Mockito to 2.x.x")
-            }
         }
     }
 }

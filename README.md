@@ -134,7 +134,6 @@ To quickly start a new project from this boilerplate follow the next steps:
 * Remove deprecated methods from instrumental tests
 * Add data unit tests
 * Replace SyncService with JobScheduler or GCM Network Manager 
-* Fix comparable wits Mockito 2.x
 * Add AutoValue
 
 ## License

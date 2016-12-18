@@ -100,10 +100,8 @@ dependencies {
     androidTestCompile "com.android.support.test:rules:$TEST_RUNNER_VERSION"
     androidTestCompile "com.android.support.test:runner:$TEST_RUNNER_VERSION"
     androidTestCompile "junit:junit:$JUNIT_VERSION"
+    androidTestCompile "org.droidparts.dexmaker:dexmaker-mockito:$DEXMAKER_VERSION"
     androidTestCompile "org.mockito:mockito-core:$MOCKITO_VERSION"
-    androidTestCompile "com.crittercism.dexmaker:dexmaker:$DEXMAKER_VERSION"
-    androidTestCompile "com.crittercism.dexmaker:dexmaker-dx:$DEXMAKER_VERSION"
-    androidTestCompile "com.crittercism.dexmaker:dexmaker-mockito:$DEXMAKER_VERSION"
     androidTestAnnotationProcessor "com.google.dagger:dagger-compiler:$DAGGER2_VERSION"
 
     // Unit tests dependencies
