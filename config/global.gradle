@@ -1,8 +1,5 @@
 ext {
     // App dependencies
-    AUTO_VALUE_VERSION = '1.3'
-    AUTO_VALUE_GSON_VERSION = '0.4.5'
-    AUTO_VALUE_PARCEL_VERSION = '0.2.5'
     BUTTER_KNIFE_VERSION = '8.4.0'
     CHECK_STYLE_VERSION = '7.3'
     CONSTRAIN_LAYOUT_VERSION = '1.0.0-beta4'
