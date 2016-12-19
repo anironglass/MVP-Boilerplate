@@ -1,4 +1,4 @@
-package ua.anironglass.template.ui.activities.main;
+package ua.anironglass.template.ui.main;
 
 
 import android.support.annotation.NonNull;
@@ -12,7 +12,7 @@ import rx.android.schedulers.AndroidSchedulers;
 import timber.log.Timber;
 import ua.anironglass.template.data.DataManager;
 import ua.anironglass.template.injection.ConfigPersistent;
-import ua.anironglass.template.ui.activities.base.BasePresenter;
+import ua.anironglass.template.ui.base.BasePresenter;
 import ua.anironglass.template.utils.RxUtils;
 
 @ConfigPersistent

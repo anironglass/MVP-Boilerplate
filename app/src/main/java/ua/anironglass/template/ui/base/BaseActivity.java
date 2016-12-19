@@ -1,4 +1,4 @@
-package ua.anironglass.template.ui.activities.base;
+package ua.anironglass.template.ui.base;
 
 import android.os.Bundle;
 import android.support.v4.util.LongSparseArray;

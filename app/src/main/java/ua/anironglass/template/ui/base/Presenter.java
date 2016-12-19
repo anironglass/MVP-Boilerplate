@@ -1,4 +1,4 @@
-package ua.anironglass.template.ui.activities.base;
+package ua.anironglass.template.ui.base;
 
 /**
  * Every presenter in the app must either implement this interface or extend BasePresenter

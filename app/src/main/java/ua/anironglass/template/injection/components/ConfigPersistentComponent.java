@@ -3,7 +3,7 @@ package ua.anironglass.template.injection.components;
 import dagger.Component;
 import ua.anironglass.template.injection.ConfigPersistent;
 import ua.anironglass.template.injection.modules.ActivityModule;
-import ua.anironglass.template.ui.activities.base.BaseActivity;
+import ua.anironglass.template.ui.base.BaseActivity;
 
 
 /**

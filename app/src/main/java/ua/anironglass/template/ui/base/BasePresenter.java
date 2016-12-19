@@ -1,4 +1,4 @@
-package ua.anironglass.template.ui.activities.base;
+package ua.anironglass.template.ui.base;
 
 /**
  * Base class that implements the Presenter interface and provides a base implementation for

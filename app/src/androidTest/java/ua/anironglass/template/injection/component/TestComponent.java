@@ -1,10 +1,10 @@
-package ua.anironglass.template.common.injection.component;
+package ua.anironglass.template.injection.component;
 
 import javax.inject.Singleton;
 
 import dagger.Component;
-import ua.anironglass.template.common.injection.module.ApplicationTestModule;
 import ua.anironglass.template.injection.components.ApplicationComponent;
+import ua.anironglass.template.injection.module.ApplicationTestModule;
 
 
 @Singleton

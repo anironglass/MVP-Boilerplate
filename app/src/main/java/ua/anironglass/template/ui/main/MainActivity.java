@@ -1,4 +1,4 @@
-package ua.anironglass.template.ui.activities.main;
+package ua.anironglass.template.ui.main;
 
 import android.content.Context;
 import android.content.Intent;
@@ -19,13 +19,13 @@ import timber.log.Timber;
 import ua.anironglass.template.R;
 import ua.anironglass.template.data.SyncService;
 import ua.anironglass.template.data.model.Photo;
-import ua.anironglass.template.ui.activities.base.BaseActivity;
+import ua.anironglass.template.ui.base.BaseActivity;
 import ua.anironglass.template.utils.SnackBarHelper;
 
 public class MainActivity extends BaseActivity implements MainMvpView {
 
     private static final String EXTRA_TRIGGER_SYNC_FLAG =
-            "ua.anironglass.template.ui.activities.main.MainActivity.EXTRA_TRIGGER_SYNC_FLAG";
+            "ua.anironglass.template.ui.main.MainActivity.EXTRA_TRIGGER_SYNC_FLAG";
 
     @BindView(R.id.recycler_view) RecyclerView mRecyclerView;
     @BindView(R.id.content_view) ConstraintLayout mContentView;

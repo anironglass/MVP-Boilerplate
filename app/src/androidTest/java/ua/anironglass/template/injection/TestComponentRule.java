@@ -1,4 +1,4 @@
-package ua.anironglass.template.utils;
+package ua.anironglass.template.injection;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -8,10 +8,10 @@ import org.junit.runner.Description;
 import org.junit.runners.model.Statement;
 
 import ua.anironglass.template.App;
-import ua.anironglass.template.common.injection.component.DaggerTestComponent;
-import ua.anironglass.template.common.injection.component.TestComponent;
-import ua.anironglass.template.common.injection.module.ApplicationTestModule;
 import ua.anironglass.template.data.DataManager;
+import ua.anironglass.template.injection.component.DaggerTestComponent;
+import ua.anironglass.template.injection.component.TestComponent;
+import ua.anironglass.template.injection.module.ApplicationTestModule;
 
 
 /**
@@ -45,11 +45,6 @@ public class TestComponentRule implements TestRule {
                 application.setComponent(null);
             }
         };
-    }
-
-    @NonNull
-    public Context getContext() {
-        return mContext;
     }
 
     @NonNull

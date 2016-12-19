@@ -17,8 +17,8 @@ import java.util.List;
 import rx.Observable;
 import ua.anironglass.template.common.TestDataFactory;
 import ua.anironglass.template.data.model.Photo;
-import ua.anironglass.template.ui.activities.main.MainActivity;
-import ua.anironglass.template.utils.TestComponentRule;
+import ua.anironglass.template.injection.TestComponentRule;
+import ua.anironglass.template.ui.main.MainActivity;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;

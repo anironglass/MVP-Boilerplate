@@ -1,4 +1,4 @@
-package ua.anironglass.template.ui.activities.base;
+package ua.anironglass.template.ui.base;
 
 import com.trello.rxlifecycle.android.ActivityEvent;
 
