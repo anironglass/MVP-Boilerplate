@@ -6,8 +6,11 @@ import java.util.List;
 import ua.anironglass.template.data.model.Photo;
 import ua.anironglass.template.ui.base.MvpView;
 
-interface MainMvpView extends MvpView {
+public interface MainMvpView extends MvpView {
 
+    void showError();
+    void showNoInternetConnection();
+    void showPhotosEmpty();
     void showPhotos(List<Photo> photos);
 
 }

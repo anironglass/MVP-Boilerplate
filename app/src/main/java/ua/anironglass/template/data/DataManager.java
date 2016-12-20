@@ -29,7 +29,7 @@ public class DataManager {
     private final PreferencesHelper mPreferencesHelper;
 
     @Inject
-    @SuppressWarnings("WeakerAccess")  // Used in activity singleton
+    @SuppressWarnings("WeakerAccess")
     public DataManager(@NonNull ApiService apiService,
                        @NonNull DatabaseHelper databaseHelper,
                        @NonNull PreferencesHelper preferencesHelper) {
@@ -41,15 +41,15 @@ public class DataManager {
     @NonNull
     public Observable<List<Photo>> getPhotos() {
         int albumId = mPreferencesHelper.getAlbumId();
-        Timber.d("Get photos, album %d", albumId);
+        Timber.d("Loading local photos, album %d", albumId);
         return mDatabaseHelper.getPhotos(albumId)
                 .distinct();
     }
 
     @NonNull
-    Observable<Photo> syncPhotos() {
+    public Observable<List<Photo>> syncPhotos() {
         int albumId = mPreferencesHelper.getAlbumId();
-        Timber.d("Sync photos, album %d", albumId);
+        Timber.d("Loading remote photos, album %d", albumId);
         return getRemotePhotos(albumId)
                 .concatMap(mDatabaseHelper::setPhotos);
     }

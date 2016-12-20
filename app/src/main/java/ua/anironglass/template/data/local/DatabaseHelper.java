@@ -31,12 +31,9 @@ public class DatabaseHelper {
         mDatabase = briteBuilder.build().wrapDatabaseHelper(dbOpenHelper, Schedulers.immediate());
     }
 
-    public BriteDatabase getDatabase() {
-        return mDatabase;
-    }
-
-    public Observable<Photo> setPhotos(final Collection<Photo> newPhotos) {
+    public Observable<List<Photo>> setPhotos(final Collection<Photo> newPhotos) {
         return Observable.create(new SavePhotosObservable(newPhotos))
+                .toList()
                 .doOnCompleted(() -> Timber.d(
                         "[%s] Saved %d photos to local cache",
                         Thread.currentThread().getName(),

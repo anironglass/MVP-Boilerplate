@@ -5,11 +5,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.app.ActionBar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import java.util.List;
-import java.util.Locale;
 
 import javax.inject.Inject;
 
@@ -29,6 +30,7 @@ public class MainActivity extends BaseActivity implements MainMvpView {
 
     @BindView(R.id.recycler_view) RecyclerView mRecyclerView;
     @BindView(R.id.content_view) ConstraintLayout mContentView;
+    @BindView(R.id.swipe_refresh_layout) SwipeRefreshLayout mSwipeRefreshLayout;
     @Inject MainPresenter mMainPresenter;
     @Inject PhotosAdapter mPhotosAdapter;
     @Inject SnackBarHelper mSnackBarHelper;
@@ -52,7 +54,10 @@ public class MainActivity extends BaseActivity implements MainMvpView {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        initializeView();
+        initializeToolbar();
+        initializeRecyclerView();
+        initializeSwipeRefreshing();
+        initializePresenter();
 
         if (getIntent().getBooleanExtra(EXTRA_TRIGGER_SYNC_FLAG, true)) {
             startService(SyncService.getStartIntent(this));
@@ -78,23 +83,55 @@ public class MainActivity extends BaseActivity implements MainMvpView {
         mMainPresenter.detachView();
     }
 
-    @Override
-    public void showPhotos(List<Photo> photos) {
-        mPhotosAdapter.setPhotos(photos);
-
-        int loadedPhotosCount = photos.size();
-        mSnackBarHelper.showShort(
-                mContentView,
-                String.format(Locale.getDefault(), "Loaded %d photos", loadedPhotosCount));
+    private void initializeToolbar() {
+        ActionBar actionBar = getSupportActionBar();
+        if (null != actionBar) {
+            actionBar.setTitle(R.string.title_main);
+            actionBar.setSubtitle(R.string.app_name);
+        }
     }
 
-    private void initializeView() {
+    private void initializeRecyclerView() {
         final RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mPhotosAdapter);
+    }
 
+    private void initializeSwipeRefreshing() {
+        mSwipeRefreshLayout.setColorSchemeResources(R.color.accent, R.color.primary);
+        mSwipeRefreshLayout.setOnRefreshListener(() -> mMainPresenter.syncPhotos());
+    }
+
+    private void initializePresenter() {
         mMainPresenter.attachView(this);
-        mMainPresenter.loadPhotos();
+        mMainPresenter.getPhotos();
+    }
+
+    /***** MVP View methods implementation *****/
+
+    @Override
+    public void showError() {
+        mSwipeRefreshLayout.setRefreshing(false);
+        //TODO Add implementation
+    }
+
+    @Override
+    public void showNoInternetConnection() {
+        mSwipeRefreshLayout.setRefreshing(false);
+        //TODO Add implementation
+    }
+
+    @Override
+    public void showPhotosEmpty() {
+        mSwipeRefreshLayout.setRefreshing(false);
+        //TODO Add implementation
+    }
+
+    @Override
+    public void showPhotos(List<Photo> photos) {
+        Timber.d("Showed %d photos", photos.size());
+        mSwipeRefreshLayout.setRefreshing(false);
+        mPhotosAdapter.setPhotos(photos);
     }
 
 }
