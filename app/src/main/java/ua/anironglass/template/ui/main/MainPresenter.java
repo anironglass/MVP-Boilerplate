@@ -31,7 +31,6 @@ public class MainPresenter extends BasePresenter<MainMvpView> {
     MainPresenter(@NonNull DataManager dataManager, @NonNull NetworkUtils networkUtils) {
         mDataManager = dataManager;
         mNetworkUtils = networkUtils;
-
     }
 
     @Override
@@ -74,13 +73,12 @@ public class MainPresenter extends BasePresenter<MainMvpView> {
                             this::showError
                     );
         }
-
     }
 
     @CheckResult
     private boolean checkNetwork() {
         boolean isConnected = mNetworkUtils.isConnected();
-        Timber.d("Network is %s", isConnected ? "available" : "not available");
+        Timber.d("Network %s available", isConnected ? "is" : "isn't");
         if (!isConnected) {
             getMvpView().showNoInternetConnection();
         }
