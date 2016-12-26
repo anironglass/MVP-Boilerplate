@@ -28,7 +28,7 @@ public class MainPresenter extends BasePresenter<MainMvpView> {
     private Subscription mLoadPhotosSubscription;
 
     @Inject
-    MainPresenter(@NonNull DataManager dataManager, @NonNull NetworkUtils networkUtils) {
+    public MainPresenter(@NonNull DataManager dataManager, @NonNull NetworkUtils networkUtils) {
         mDataManager = dataManager;
         mNetworkUtils = networkUtils;
     }
@@ -46,7 +46,7 @@ public class MainPresenter extends BasePresenter<MainMvpView> {
         RxUtils.unsubscribe(mLoadPhotosSubscription);
     }
 
-    void getPhotos() {
+    public void getPhotos() {
         Timber.d("Starting loading local photos...");
         checkViewAttached();
         RxUtils.unsubscribe(mLoadPhotosSubscription);
@@ -59,7 +59,7 @@ public class MainPresenter extends BasePresenter<MainMvpView> {
                 );
     }
 
-    void syncPhotos() {
+    public void syncPhotos() {
         Timber.d("Starting loading remote photos...");
         checkViewAttached();
 

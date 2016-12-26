@@ -11,13 +11,16 @@ import ua.anironglass.template.injection.ApplicationContext;
 
 
 @Singleton
-public final class NetworkUtils {
+public class NetworkUtils {
 
     private Context mContext;
 
     @Inject
     public NetworkUtils(@ApplicationContext Context context) {
         mContext = context;
+    }
+
+    protected NetworkUtils() {
     }
 
     public boolean isConnected() {
