@@ -41,9 +41,9 @@ public final class PermissionsTest {
 
     @Test
     public void shouldMatchPermissions() {
+        // Initialize: configure test for current app configuration
         FsFile mergedManifestFile;
         Object[] expectedPermissions;
-
         if (BuildConfig.DEBUG) {
             mergedManifestFile = Fs.fileFromPath(MERGED_DEBUG_MANIFEST_FILE);
             expectedPermissions = EXPECTED_DEBUG_PERMISSIONS;
@@ -52,7 +52,10 @@ public final class PermissionsTest {
             expectedPermissions = EXPECTED_RELEASE_PERMISSIONS;
         }
 
+        // Run: Creates a Robolectric configuration using specified manifest file
         AndroidManifest manifest = new AndroidManifest(mergedManifestFile, null, null);
+
+        // Check: manifest file should contain only expected permissions
         assertThat(manifest.getUsedPermissions())
                 .containsExactly(expectedPermissions);
     }

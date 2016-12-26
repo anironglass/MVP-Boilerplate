@@ -31,13 +31,17 @@ public final class PreferencesTest {
 
     @Test
     public void shouldSetAlbumId() {
+        // Run: set test prefs value
         mPreferencesHelper.setAlbumId(TEST_ALBUM_ID);
+
+        // Check: should return test value
         assertThat(mPreferencesHelper.getAlbumId())
                 .isEqualTo(TEST_ALBUM_ID);
     }
 
     @Test
     public void shouldMatchDefaults() {
+        // Check: should return default value
         assertThat(mPreferencesHelper.getAlbumId())
                 .isEqualTo(PreferencesHelper.DEFAULT_ALBUM_ID);
     }
