@@ -53,6 +53,10 @@ public class DatabaseHelper {
                         albumId));
     }
 
+    public BriteDatabase getDatabase() {
+        return mDatabase;
+    }
+
 
     private class SavePhotosObservable implements Observable.OnSubscribe<Photo> {
 

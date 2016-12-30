@@ -1,5 +1,6 @@
 package ua.anironglass.template.common;
 
+import android.support.annotation.IntRange;
 import android.support.annotation.NonNull;
 
 import java.util.ArrayList;
@@ -38,12 +39,13 @@ public class TestDataFactory {
         return photos;
     }
 
-    public static Photo getRandomPhoto(@NonNull String title) {
+    public static Photo getRandomPhoto(@NonNull String title,
+                                       @IntRange(from = 1, to = 100) int albumId) {
         Random random = new Random();
         int randomColor = random.nextInt(0xFFFFFF + 1);
         String randomColorCode = String.format(Locale.getDefault(), "#%06x", randomColor);
         return Photo.builder()
-                .setAlbumId(TEST_ALBUM_ID)
+                .setAlbumId(albumId)
                 .setId(NEXT_ID.getAndIncrement())
                 .setTitle(title)
                 .setUrl(TEST_URL + randomColorCode)
@@ -52,7 +54,7 @@ public class TestDataFactory {
     }
 
     public static Photo getRandomPhoto() {
-        return getRandomPhoto(LOREM_IPSUM);
+        return getRandomPhoto(LOREM_IPSUM, TEST_ALBUM_ID);
     }
 
 }

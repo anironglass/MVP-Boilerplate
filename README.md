@@ -132,8 +132,7 @@ To quickly start a new project from this boilerplate follow the next steps:
 * Add [LeakCanary](https://github.com/square/leakcanary)
 * Add [Moxy](https://github.com/Arello-Mobile/Moxy)
 * Remove deprecated methods from instrumental tests
-* Add data unit tests
-* Replace SyncService with JobScheduler or GCM Network Manager 
+* Replace SyncService with JobScheduler or GCM Network Manager
 * Add AutoValue
 
 ## License

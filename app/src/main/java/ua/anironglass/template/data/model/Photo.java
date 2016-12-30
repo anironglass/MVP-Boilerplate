@@ -70,6 +70,43 @@ public class Photo {
                 getTitle());
     }
 
+    @Override
+    public boolean equals(Object another) {
+        if (this == another) {
+            return true;
+        }
+        if (null == another || getClass() != another.getClass()) {
+            return false;
+        }
+
+        Photo anotherPhoto = (Photo) another;
+
+        if (getAlbumId() != anotherPhoto.getAlbumId()) {
+            return false;
+        }
+        if (getId() != anotherPhoto.getId()) {
+            return false;
+        }
+        if (null == getTitle()
+                ? anotherPhoto.getTitle() != null
+                : !getTitle().equals(anotherPhoto.getTitle())) {
+            return false;
+        }
+        return null == getUrl()
+                ? anotherPhoto.getUrl() == null
+                : getUrl().equals(anotherPhoto.getUrl());
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getAlbumId();
+        result = 31 * result + getId();
+        result = 31 * result + (getTitle() != null ? getTitle().hashCode() : 0);
+        result = 31 * result + (getUrl() != null ? getUrl().hashCode() : 0);
+        return result;
+    }
+
     public static class Builder {
 
         private int mAlbumId;

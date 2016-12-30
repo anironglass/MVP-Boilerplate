@@ -11,7 +11,7 @@ import ua.anironglass.template.injection.ApplicationContext;
 
 
 @Singleton
-class DbOpenHelper extends SQLiteOpenHelper {
+public class DbOpenHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "anironglass.db";
     private static final int DATABASE_VERSION = 1;
