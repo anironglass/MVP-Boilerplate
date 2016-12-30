@@ -1,6 +1,5 @@
 package ua.anironglass.template.data;
 
-import android.support.annotation.IntRange;
 import android.support.annotation.NonNull;
 
 import java.util.List;
@@ -42,20 +41,13 @@ public class DataManager {
     public Observable<List<Photo>> getPhotos() {
         int albumId = mPreferencesHelper.getAlbumId();
         Timber.d("Loading local photos, album %d", albumId);
-        return mDatabaseHelper.getPhotos(albumId)
-                .distinct();
+        return mDatabaseHelper.getPhotos(albumId);
     }
 
     @NonNull
     public Observable<List<Photo>> syncPhotos() {
         int albumId = mPreferencesHelper.getAlbumId();
         Timber.d("Loading remote photos, album %d", albumId);
-        return getRemotePhotos(albumId)
-                .concatMap(mDatabaseHelper::setPhotos);
-    }
-
-    @NonNull
-    private Observable<List<Photo>> getRemotePhotos(@IntRange(from = 1, to = 100) int albumId) {
         return mApiService.getPhotos(albumId)
                 .subscribeOn(Schedulers.io())
                 .doOnNext(photos -> Timber.d(
@@ -63,6 +55,7 @@ public class DataManager {
                         Thread.currentThread().getName(),
                         photos.size(),
                         albumId))
+                .concatMap(mDatabaseHelper::setPhotos)
                 .retry(RETRY_COUNT_FOR_REQUEST)
                 .timeout(TIMEOUT_IN_SECONDS, TimeUnit.SECONDS);
     }

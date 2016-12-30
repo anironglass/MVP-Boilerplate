@@ -11,7 +11,7 @@ import ua.anironglass.template.injection.ApplicationContext;
 
 
 @Singleton
-public final class PreferencesHelper {
+public class PreferencesHelper {
 
     private static final String PREF_FILE_NAME = "anironglass_pref_file";
 

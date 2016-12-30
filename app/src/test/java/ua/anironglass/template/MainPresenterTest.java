@@ -140,7 +140,7 @@ public final class MainPresenterTest {
     public void shouldShowPhotosWhenRequestLocalPhotos() {
         // Initialize: turn internet connection ON and return test observable on photos request
         mTestNetworkUtils.setConnected(true);
-        List<Photo> testPhotos = TestDataFactory.getRandomPhotos(20);
+        List<Photo> testPhotos = TestDataFactory.getRandomPhotos();
         when(mMockDataManager.getPhotos())
                 .thenReturn(Observable.just(testPhotos));
 
@@ -158,7 +158,7 @@ public final class MainPresenterTest {
     public void shouldShowPhotosWhenRequestRemotePhotos() {
         // Initialize: turn internet connection ON and return test observable on photos request
         mTestNetworkUtils.setConnected(true);
-        List<Photo> testPhotos = TestDataFactory.getRandomPhotos(20);
+        List<Photo> testPhotos = TestDataFactory.getRandomPhotos();
         when(mMockDataManager.syncPhotos())
                 .thenReturn(Observable.just(testPhotos));
 
