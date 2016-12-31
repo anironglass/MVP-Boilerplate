@@ -35,16 +35,16 @@ android {
             testCoverageEnabled true
             debuggable true
         }
+    }
 
-        sourceSets {
-            // Share common test classes between unit test and instrumental test
-            def commonTestDir = "src/commonTest/java/"
-            androidTest {
-                java.srcDirs += commonTestDir
-            }
-            test {
-                java.srcDirs += commonTestDir
-            }
+    sourceSets {
+        // Share common test classes between unit test and instrumental test
+        def commonTestDir = "src/commonTest/java/"
+        androidTest {
+            java.srcDirs += commonTestDir
+        }
+        test {
+            java.srcDirs += commonTestDir
         }
     }
 
@@ -102,7 +102,6 @@ dependencies {
 
     // Unit tests dependencies
     testCompile "com.google.truth:truth:$TRUTH_VERSION"
-    testCompile "com.squareup.leakcanary:leakcanary-android-no-op:$LEAK_CANARY_VERSION"
     testCompile "junit:junit:$JUNIT_VERSION"
     testCompile "org.mockito:mockito-core:$MOCKITO_VERSION"
     testCompile "org.robolectric:robolectric:$ROBOLECTRIC_VERSION"
