@@ -1,6 +1,6 @@
-# Android Project Template
+# Android Project Boilerplate
 
-Template for new Android app based on [Ribot](https://github.com/ribot/android-boilerplate) and [Google](https://github.com/googlesamples/android-architecture/) templates and some common sense
+Boilerplate for new Android app based on [Ribot](https://github.com/ribot/android-boilerplate) and [Google](https://github.com/googlesamples/android-architecture/) and some common sense
 
 Libraries and tools included:
 
@@ -116,11 +116,11 @@ To quickly start a new project from this boilerplate follow the next steps:
 
 * Download this [repository as a zip](https://github.com/AnironGlass/MVP-Template/archive/master.zip).
 * Change the package name. 
-  * Rename packages in `androidTest`, `commonTest`, `main` and `test` using Android Studio.
+  * Rename packages in `androidTest`, `commonTest`, `main`, `main/src/debug` and `test` using Android Studio.
   * In `app/build.gradle` file, `applicationId`.
   * In `src/main/AndroidManifest.xml` and `src/debug/AndroidManifest.xml`.
-* Change MainActivity and LeakCanary activity labels in `src/res/values/strings.xml`.
-* Change MainActivity debug labels in `src/debug/res/values/strings.xml`.
+* Change MainActivity activity label in `src/res/values/strings.xml`.
+* Change MainActivity and LeakCanary labels in `src/debug/res/values/strings.xml`.
 * Create a new git repository, [see GitHub tutorial](https://help.github.com/articles/adding-an-existing-project-to-github-using-the-command-line/).
 * Replace the example code with your app code following the same architecture.
 * Update `proguard-rules.pro` to keep models (see TODO in file) and add extra rules to file if needed.

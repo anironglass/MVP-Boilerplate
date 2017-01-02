@@ -1,8 +1,7 @@
 <resources>
 
     <!-- Global strings -->
-    <string name="app_name">Template</string>
-    <string name="leak_canary_display_activity_label">TemplateLeaks</string>
+    <string name="app_name">Boilerplate</string>
 
     <!-- Strings related to MainActivity -->
     <string name="title_main">Photos</string>
