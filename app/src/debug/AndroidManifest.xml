@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest
     xmlns:android="http://schemas.android.com/apk/res/android"
-    package="ua.anironglass.template" >
+    xmlns:tools="http://schemas.android.com/tools"
+    package="ua.anironglass.template">
 
     <!-- Used by instrumentation tests only. Do not include in live build! -->
     <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
@@ -11,5 +12,10 @@
     <!-- Used by LeakCanary for debugging memory leaks. Do not include in live build! -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <application
+        android:name=".DebugApp"
+        tools:replace="android:name">
+    </application>
 
 </manifest>
