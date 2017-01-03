@@ -30,7 +30,7 @@ import static com.google.common.truth.Truth.assertThat;
  * Unit tests integration with a SQLite Database using Robolectric
  */
 @RunWith(RobolectricTestRunner.class)
-@Config(constants = BuildConfig.class, sdk = DefaultConfig.EMULATE_SDK)
+@Config(application = TestApp.class, constants = BuildConfig.class, sdk = DefaultConfig.EMULATE_SDK)
 public final class DatabaseHelperTest {
 
     private static final int TEST_ALBUM_ID = 99;

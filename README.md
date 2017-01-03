@@ -1,6 +1,6 @@
 # Android Project Boilerplate
 
-Boilerplate for new Android app based on [Ribot](https://github.com/ribot/android-boilerplate) and [Google](https://github.com/googlesamples/android-architecture/) and some common sense
+Boilerplate for new Android app based on [Ribot](https://github.com/ribot/android-boilerplate) and [Google](https://github.com/googlesamples/android-architecture/) projects and some common sense
 
 Libraries and tools included:
 
@@ -14,6 +14,7 @@ Libraries and tools included:
 - [Butterknife](https://github.com/JakeWharton/butterknife)
 - [Timber](https://github.com/JakeWharton/timber)
 - [Glide](https://github.com/bumptech/glide)
+- [LeakCanary](https://github.com/square/leakcanary)
 - Functional tests with [Espresso](https://google.github.io/android-testing-support-library/docs/espresso/index.html)
 - [Robolectric](http://robolectric.org/)
 - [Mockito](http://mockito.org/)
@@ -129,7 +130,6 @@ To quickly start a new project from this boilerplate follow the next steps:
 
 ## TODO list
 
-* Add [LeakCanary](https://github.com/square/leakcanary)
 * Add [Moxy](https://github.com/Arello-Mobile/Moxy)
 * Remove deprecated methods from instrumental tests
 * Replace SyncService with JobScheduler or GCM Network Manager

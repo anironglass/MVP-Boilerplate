@@ -11,6 +11,7 @@ import ua.anironglass.boilerplate.data.SyncService;
 import ua.anironglass.boilerplate.data.local.PreferencesHelper;
 import ua.anironglass.boilerplate.injection.ApplicationContext;
 import ua.anironglass.boilerplate.injection.modules.ApplicationModule;
+import ua.anironglass.boilerplate.utils.LeakCanaryHelper;
 import ua.anironglass.boilerplate.utils.NetworkStateHelper;
 import ua.anironglass.boilerplate.utils.NetworkUtils;
 import ua.anironglass.boilerplate.utils.RxEventBus;
@@ -24,6 +25,7 @@ public interface ApplicationComponent {
     @ApplicationContext Context context();
     Application application();
     DataManager dataManager();
+    LeakCanaryHelper leakCanaryHelper();
     NetworkStateHelper networkStateHelper();
     NetworkUtils networkUtils();
     RxEventBus eventBus();

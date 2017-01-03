@@ -16,7 +16,7 @@ import static com.google.common.truth.Truth.assertThat;
 
 
 @RunWith(RobolectricTestRunner.class)
-@Config(manifest = Config.NONE, sdk = DefaultConfig.EMULATE_SDK)
+@Config(application = TestApp.class, manifest = Config.NONE, sdk = DefaultConfig.EMULATE_SDK)
 public final class PreferencesTest {
 
     private static final int TEST_ALBUM_ID = 42;

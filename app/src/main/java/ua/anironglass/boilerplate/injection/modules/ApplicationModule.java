@@ -4,10 +4,13 @@ import android.app.Application;
 import android.content.Context;
 import android.support.annotation.NonNull;
 
+import com.squareup.leakcanary.RefWatcher;
+
 import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
+import ua.anironglass.boilerplate.App;
 import ua.anironglass.boilerplate.data.remote.ApiService;
 import ua.anironglass.boilerplate.injection.ApplicationContext;
 
@@ -42,6 +45,13 @@ public final class ApplicationModule {
     @Singleton
     ApiService provideApiService() {
         return ApiService.Builder.newApiService();
+    }
+
+    @NonNull
+    @Provides
+    @Singleton
+    RefWatcher provideRefWatcher(@ApplicationContext Context context) {
+        return App.get(context).getRefWatcher();
     }
 
 }

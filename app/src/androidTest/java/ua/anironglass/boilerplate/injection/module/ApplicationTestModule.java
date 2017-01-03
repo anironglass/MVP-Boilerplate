@@ -4,6 +4,8 @@ import android.app.Application;
 import android.content.Context;
 import android.support.annotation.NonNull;
 
+import com.squareup.leakcanary.RefWatcher;
+
 import javax.inject.Singleton;
 
 import dagger.Module;
@@ -39,6 +41,13 @@ public class ApplicationTestModule  {
     @ApplicationContext
     Context provideContext() {
         return mApplication;
+    }
+
+    @NonNull
+    @Provides
+    @Singleton
+    RefWatcher provideRefWatcher() {
+        return RefWatcher.DISABLED;
     }
 
     /************* MOCKS *************/
