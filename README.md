@@ -133,6 +133,8 @@ To quickly start a new project from this boilerplate follow the next steps:
 * Add [Moxy](https://github.com/Arello-Mobile/Moxy)
 * Replace SyncService with JobScheduler or GCM Network Manager
 * Add AutoValue
+* Upgrade ReactiveX to 2.x
+* Add splash activity
 
 ## License
 
