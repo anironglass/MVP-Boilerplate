@@ -4,11 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="ua.anironglass.boilerplate">
 
-    <!-- Used by instrumentation tests only. Do not include in live build! -->
-    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <uses-permission android:name="android.permission.READ_LOGS" />
-
     <!-- Used by LeakCanary for debugging memory leaks. Do not include in live build! -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />

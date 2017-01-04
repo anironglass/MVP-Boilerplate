@@ -131,7 +131,6 @@ To quickly start a new project from this boilerplate follow the next steps:
 ## TODO list
 
 * Add [Moxy](https://github.com/Arello-Mobile/Moxy)
-* Remove deprecated methods from instrumental tests
 * Replace SyncService with JobScheduler or GCM Network Manager
 * Add AutoValue
 

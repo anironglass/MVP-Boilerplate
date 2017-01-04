@@ -12,7 +12,7 @@ import ua.anironglass.boilerplate.utils.RxIdlingResource;
  * Runner that registers a Espresso Indling resource that handles waiting for
  * RxJava Observables to finish.
  */
-public final class RxAndroidJUnitRunner extends UnlockDeviceAndroidJUnitRunner {
+public final class RxAndroidJUnitRunner extends CustomAppAndroidJUnitRunner {
 
     private RxIdlingExecutionHook mRxIdlingExecutionHook;
 
@@ -30,4 +30,5 @@ public final class RxAndroidJUnitRunner extends UnlockDeviceAndroidJUnitRunner {
         super.onDestroy();
         mRxIdlingExecutionHook.removeHook();
     }
+
 }

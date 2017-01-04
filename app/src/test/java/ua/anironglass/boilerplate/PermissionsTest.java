@@ -25,9 +25,6 @@ public final class PermissionsTest {
     private static final String[] EXPECTED_DEBUG_PERMISSIONS = {
             "android.permission.INTERNET",
             "android.permission.ACCESS_NETWORK_STATE",
-            "android.permission.DISABLE_KEYGUARD",
-            "android.permission.WAKE_LOCK",
-            "android.permission.READ_LOGS",
             "android.permission.READ_EXTERNAL_STORAGE",
             "android.permission.WRITE_EXTERNAL_STORAGE"
     };
