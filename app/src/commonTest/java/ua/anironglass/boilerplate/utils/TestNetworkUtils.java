@@ -1,6 +1,4 @@
-package ua.anironglass.boilerplate.common;
-
-import ua.anironglass.boilerplate.utils.NetworkUtils;
+package ua.anironglass.boilerplate.utils;
 
 
 public class TestNetworkUtils extends NetworkUtils {

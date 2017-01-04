@@ -15,10 +15,10 @@ import org.junit.runner.RunWith;
 import java.util.List;
 
 import rx.Observable;
-import ua.anironglass.boilerplate.common.TestDataFactory;
 import ua.anironglass.boilerplate.data.model.Photo;
 import ua.anironglass.boilerplate.injection.TestComponentRule;
 import ua.anironglass.boilerplate.ui.main.MainActivity;
+import ua.anironglass.boilerplate.utils.TestDataFactory;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;

@@ -13,14 +13,14 @@ import java.util.Collections;
 import java.util.List;
 
 import rx.Observable;
-import ua.anironglass.boilerplate.common.TestDataFactory;
-import ua.anironglass.boilerplate.common.TestLifecycleFactory;
-import ua.anironglass.boilerplate.common.TestNetworkUtils;
 import ua.anironglass.boilerplate.data.DataManager;
 import ua.anironglass.boilerplate.data.model.Photo;
 import ua.anironglass.boilerplate.ui.main.MainMvpView;
 import ua.anironglass.boilerplate.ui.main.MainPresenter;
 import ua.anironglass.boilerplate.utils.RxSchedulersRule;
+import ua.anironglass.boilerplate.utils.TestDataFactory;
+import ua.anironglass.boilerplate.utils.TestLifecycleFactory;
+import ua.anironglass.boilerplate.utils.TestNetworkUtils;
 
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;

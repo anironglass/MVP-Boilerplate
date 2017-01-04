@@ -16,13 +16,13 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import rx.observers.TestSubscriber;
-import ua.anironglass.boilerplate.common.TestDataFactory;
 import ua.anironglass.boilerplate.data.local.Database;
 import ua.anironglass.boilerplate.data.local.DatabaseHelper;
 import ua.anironglass.boilerplate.data.local.DbOpenHelper;
 import ua.anironglass.boilerplate.data.model.Photo;
 import ua.anironglass.boilerplate.utils.DefaultConfig;
 import ua.anironglass.boilerplate.utils.RxSchedulersRule;
+import ua.anironglass.boilerplate.utils.TestDataFactory;
 
 import static com.google.common.truth.Truth.assertThat;
 

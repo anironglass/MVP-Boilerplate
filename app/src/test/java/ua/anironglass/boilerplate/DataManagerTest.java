@@ -13,13 +13,13 @@ import java.util.List;
 import rx.Observable;
 import rx.Subscription;
 import rx.observers.TestSubscriber;
-import ua.anironglass.boilerplate.common.TestDataFactory;
 import ua.anironglass.boilerplate.data.DataManager;
 import ua.anironglass.boilerplate.data.local.DatabaseHelper;
 import ua.anironglass.boilerplate.data.local.PreferencesHelper;
 import ua.anironglass.boilerplate.data.model.Photo;
 import ua.anironglass.boilerplate.data.remote.ApiService;
 import ua.anironglass.boilerplate.utils.RxUtils;
+import ua.anironglass.boilerplate.utils.TestDataFactory;
 
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;

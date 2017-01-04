@@ -1,4 +1,4 @@
-package ua.anironglass.boilerplate.common;
+package ua.anironglass.boilerplate.utils;
 
 import com.trello.rxlifecycle.android.ActivityEvent;
 
