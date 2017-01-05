@@ -25,7 +25,7 @@ public class DatabaseHelper {
     private final BriteDatabase mDatabase;
 
     @Inject
-    @SuppressWarnings("WeakerAccess")  // Used in global singleton
+    @SuppressWarnings("WeakerAccess")
     public DatabaseHelper(DbOpenHelper dbOpenHelper) {
         SqlBrite.Builder briteBuilder = new SqlBrite.Builder();
         mDatabase = briteBuilder.build().wrapDatabaseHelper(dbOpenHelper, Schedulers.immediate());

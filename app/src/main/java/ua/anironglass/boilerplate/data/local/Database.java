@@ -16,13 +16,13 @@ public final class Database {
 
         public static final String TABLE_NAME = "anironglass_photos";
 
-        public static final String COLUMN_ID = "id";
-        public static final String COLUMN_ALBUM_ID = "album_id";
-        public static final String COLUMN_TITLE = "title";
-        public static final String COLUMN_URL = "url";
-        public static final String COLUMN_THUMBNAIL_URL = "thumbnailUrl";
+        static final String COLUMN_ID = "id";
+        static final String COLUMN_ALBUM_ID = "album_id";
+        static final String COLUMN_TITLE = "title";
+        static final String COLUMN_URL = "url";
+        static final String COLUMN_THUMBNAIL_URL = "thumbnailUrl";
 
-        public static final String CREATE =
+        static final String CREATE =
                 "CREATE TABLE " + TABLE_NAME + " (" +
                         COLUMN_ID + " INTEGER PRIMARY KEY, " +
                         COLUMN_ALBUM_ID + " INTEGER NOT NULL, " +
@@ -31,7 +31,7 @@ public final class Database {
                         COLUMN_THUMBNAIL_URL + " TEXT NOT NULL" +
                         "); ";
 
-        public static ContentValues toContentValues(Photo photo) {
+        static ContentValues toContentValues(Photo photo) {
             ContentValues values = new ContentValues();
             values.put(COLUMN_ID, photo.getId());
             values.put(COLUMN_ALBUM_ID, photo.getAlbumId());

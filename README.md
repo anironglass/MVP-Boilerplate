@@ -122,6 +122,8 @@ To quickly start a new project from this boilerplate follow the next steps:
   * In `src/main/AndroidManifest.xml` and `src/debug/AndroidManifest.xml`.
 * Change MainActivity activity label in `src/res/values/strings.xml`.
 * Change MainActivity and LeakCanary labels in `src/debug/res/values/strings.xml`.
+* Change DATABASE_NAME in `main/src/data/local/DbOpenHelper.java`.
+* Change PREF_FILE_NAME in `main/src/data/local/PreferencesHelper.java`.
 * Create a new git repository, [see GitHub tutorial](https://help.github.com/articles/adding-an-existing-project-to-github-using-the-command-line/).
 * Replace the example code with your app code following the same architecture.
 * Update `proguard-rules.pro` to keep models (see TODO in file) and add extra rules to file if needed.

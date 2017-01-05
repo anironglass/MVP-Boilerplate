@@ -17,7 +17,7 @@ public class DbOpenHelper extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 1;
 
     @Inject
-    @SuppressWarnings("WeakerAccess")  // Used in global singleton
+    @SuppressWarnings("WeakerAccess")
     public DbOpenHelper(@ApplicationContext Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }

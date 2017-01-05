@@ -22,7 +22,7 @@ public class PreferencesHelper {
     private final SharedPreferences mPref;
 
     @Inject
-    @SuppressWarnings("WeakerAccess")  // Used in global singleton
+    @SuppressWarnings("WeakerAccess")
     public PreferencesHelper(@ApplicationContext Context context) {
         mPref = context.getSharedPreferences(PREF_FILE_NAME, Context.MODE_PRIVATE);
     }
@@ -37,6 +37,7 @@ public class PreferencesHelper {
         editor.apply();
     }
 
+    @SuppressWarnings("unused")
     public void clear() {
         mPref.edit().clear().apply();
     }
