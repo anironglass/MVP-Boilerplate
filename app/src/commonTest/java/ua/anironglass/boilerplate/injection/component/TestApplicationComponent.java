@@ -4,10 +4,10 @@ import javax.inject.Singleton;
 
 import dagger.Component;
 import ua.anironglass.boilerplate.injection.components.ApplicationComponent;
-import ua.anironglass.boilerplate.injection.module.ApplicationTestModule;
+import ua.anironglass.boilerplate.injection.module.TestApplicationModule;
 
 
 @Singleton
-@Component(modules = ApplicationTestModule.class)
-public interface TestComponent extends ApplicationComponent {
+@Component(modules = TestApplicationModule.class)
+public interface TestApplicationComponent extends ApplicationComponent {
 }

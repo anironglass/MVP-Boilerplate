@@ -8,15 +8,13 @@ import android.support.test.runner.AndroidJUnit4;
 
 import org.junit.Rule;
 import org.junit.Test;
-import org.junit.rules.RuleChain;
-import org.junit.rules.TestRule;
 import org.junit.runner.RunWith;
 
 import java.util.List;
 
 import rx.Observable;
+import ua.anironglass.boilerplate.data.DataManager;
 import ua.anironglass.boilerplate.data.model.Photo;
-import ua.anironglass.boilerplate.injection.TestComponentRule;
 import ua.anironglass.boilerplate.ui.main.MainActivity;
 import ua.anironglass.boilerplate.utils.TestDataFactory;
 
@@ -31,10 +29,8 @@ import static org.mockito.Mockito.when;
 @RunWith(AndroidJUnit4.class)
 public class MainActivityTest {
 
-    private final TestComponentRule mComponentRule =
-            new TestComponentRule(InstrumentationRegistry.getTargetContext());
-
-    private final ActivityTestRule<MainActivity> mMainActivityTestRule =
+    @Rule
+    public final ActivityTestRule<MainActivity> mMainActivityTestRule =
             new ActivityTestRule<MainActivity>(MainActivity.class, false, false) {
                 @Override
                 protected Intent getActivityIntent() {
@@ -46,22 +42,22 @@ public class MainActivityTest {
                 }
             };
 
-    // TestComponentRule needs to go first to make sure the Dagger ApplicationTestComponent is set
-    // in the Application before any Activity is launched.
-    @Rule
-    public final TestRule chain = RuleChain.outerRule(mComponentRule).around(mMainActivityTestRule);
-
-
     @Test
     public void shouldShowsListOfPhotos() {
-        List<Photo> testDataPhotos = TestDataFactory.getRandomPhotos(20);
-        when(mComponentRule.getMockDataManager().getPhotos())
-                .thenReturn(Observable.just(testDataPhotos));
+        // Initialize: prepare test photos
+        List<Photo> testPhotos = TestDataFactory.getRandomPhotos(20);
+        DataManager mockedDataManager = TestApp.get(InstrumentationRegistry.getTargetContext())
+                .getComponent()
+                .dataManager();
+        when(mockedDataManager.getPhotos())
+                .thenReturn(Observable.just(testPhotos));
 
+        // Run: launch MainActivity
         mMainActivityTestRule.launchActivity(null);
 
+        // Check: should show all photos
         int position = 0;
-        for (Photo photo : testDataPhotos) {
+        for (Photo photo : testPhotos) {
             onView(withId(R.id.recycler_view))
                     .perform(RecyclerViewActions.scrollToPosition(position));
             onView(withText(photo.getText()))

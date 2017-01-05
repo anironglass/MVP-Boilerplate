@@ -5,12 +5,26 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.WindowManager;
 
+import ua.anironglass.boilerplate.injection.component.DaggerTestApplicationComponent;
+import ua.anironglass.boilerplate.injection.components.ApplicationComponent;
+import ua.anironglass.boilerplate.injection.module.TestApplicationModule;
+
 public class TestApp extends App {
 
     @Override
     public void onCreate() {
         super.onCreate();
         registerActivityLifecycleCallbacks(new UnlockDeviceActivityLifecycleCallbacks());
+    }
+
+    @Override
+    public ApplicationComponent getComponent() {
+        if (null == mApplicationComponent) {
+            mApplicationComponent = DaggerTestApplicationComponent.builder()
+                    .testApplicationModule(new TestApplicationModule(this))
+                    .build();
+        }
+        return mApplicationComponent;
     }
 
 

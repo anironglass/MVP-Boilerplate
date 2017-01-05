@@ -3,7 +3,6 @@ package ua.anironglass.boilerplate;
 import android.app.Application;
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 
 import com.squareup.leakcanary.RefWatcher;
 
@@ -27,11 +26,6 @@ public class App extends Application {
                     .build();
         }
         return mApplicationComponent;
-    }
-
-    // Needed to replace the component with a test specific one
-    public void setComponent(@Nullable ApplicationComponent applicationComponent) {
-        mApplicationComponent = applicationComponent;
     }
 
     @NonNull
