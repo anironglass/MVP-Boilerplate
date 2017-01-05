@@ -22,7 +22,7 @@ import static org.mockito.Mockito.mock;
  * This allows injecting mocks if necessary.
  */
 @Module
-public class TestApplicationModule {
+public final class TestApplicationModule {
 
     private final Application mApplication;
 
