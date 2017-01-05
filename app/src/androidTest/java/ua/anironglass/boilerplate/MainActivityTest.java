@@ -45,7 +45,7 @@ public class MainActivityTest {
     @Test
     public void shouldShowsListOfPhotos() {
         // Initialize: prepare test photos
-        List<Photo> testPhotos = TestDataFactory.getRandomPhotos(20);
+        List<Photo> testPhotos = TestDataFactory.getRandomPhotos();
         DataManager mockedDataManager = TestApp.get(InstrumentationRegistry.getTargetContext())
                 .getComponent()
                 .dataManager();

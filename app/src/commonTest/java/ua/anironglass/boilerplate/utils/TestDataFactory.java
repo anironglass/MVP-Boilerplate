@@ -15,7 +15,7 @@ import ua.anironglass.boilerplate.data.model.Photo;
  * Factory class that makes instances of data models with random field values.
  * The aim of this class is to help setting up test fixtures.
  */
-public class TestDataFactory {
+public final class TestDataFactory {
 
     private static final int DEFAULT_QUANTITY = 50;
     private static final int TEST_ALBUM_ID = 1;
@@ -28,12 +28,8 @@ public class TestDataFactory {
 
 
     public static List<Photo> getRandomPhotos() {
-        return getRandomPhotos(DEFAULT_QUANTITY);
-    }
-
-    public static List<Photo> getRandomPhotos(int quantity) {
         List<Photo> photos = new ArrayList<>();
-        for (int i = 0; i < quantity; i++) {
+        for (int i = 0; i < DEFAULT_QUANTITY; i++) {
             photos.add(getRandomPhoto());
         }
         return photos;
@@ -53,6 +49,7 @@ public class TestDataFactory {
                 .build();
     }
 
+    @SuppressWarnings("WeakerAccess")
     public static Photo getRandomPhoto() {
         return getRandomPhoto(LOREM_IPSUM, TEST_ALBUM_ID);
     }
