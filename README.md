@@ -14,6 +14,7 @@ Libraries and tools included:
 - [Butterknife](https://github.com/JakeWharton/butterknife)
 - [Timber](https://github.com/JakeWharton/timber)
 - [Glide](https://github.com/bumptech/glide)
+- [JSONPlaceholder](https://jsonplaceholder.typicode.com/) - fake Online REST API for Testing and Prototyping
 - [LeakCanary](https://github.com/square/leakcanary)
 - Functional tests with [Espresso](https://google.github.io/android-testing-support-library/docs/espresso/index.html)
 - [Robolectric](http://robolectric.org/)
