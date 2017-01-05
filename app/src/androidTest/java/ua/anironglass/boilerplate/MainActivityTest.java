@@ -27,7 +27,7 @@ import static org.mockito.Mockito.when;
 
 
 @RunWith(AndroidJUnit4.class)
-public class MainActivityTest {
+public final class MainActivityTest {
 
     @Rule
     public final ActivityTestRule<MainActivity> mMainActivityTestRule =
