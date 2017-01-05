@@ -10,13 +10,17 @@ import org.robolectric.RuntimeEnvironment;
 import org.robolectric.annotation.Config;
 
 import ua.anironglass.boilerplate.data.local.PreferencesHelper;
-import ua.anironglass.boilerplate.utils.DefaultConfig;
+import ua.anironglass.boilerplate.utils.RobolectricDefaultConfig;
 
 import static com.google.common.truth.Truth.assertThat;
 
 
 @RunWith(RobolectricTestRunner.class)
-@Config(application = TestApp.class, manifest = Config.NONE, sdk = DefaultConfig.EMULATE_SDK)
+@Config(
+        application = TestApp.class,
+        manifest = Config.NONE,
+        sdk = RobolectricDefaultConfig.EMULATE_SDK
+)
 public final class PreferencesTest {
 
     private static final int TEST_ALBUM_ID = 42;

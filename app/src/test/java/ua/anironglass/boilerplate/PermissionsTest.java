@@ -8,13 +8,17 @@ import org.robolectric.manifest.AndroidManifest;
 import org.robolectric.res.Fs;
 import org.robolectric.res.FsFile;
 
-import ua.anironglass.boilerplate.utils.DefaultConfig;
+import ua.anironglass.boilerplate.utils.RobolectricDefaultConfig;
 
 import static com.google.common.truth.Truth.assertThat;
 
 
 @RunWith(RobolectricTestRunner.class)
-@Config(application = TestApp.class, manifest = Config.NONE, sdk = DefaultConfig.EMULATE_SDK)
+@Config(
+        application = TestApp.class,
+        manifest = Config.NONE,
+        sdk = RobolectricDefaultConfig.EMULATE_SDK
+)
 public final class PermissionsTest {
 
     private static final String[] EXPECTED_RELEASE_PERMISSIONS = {
