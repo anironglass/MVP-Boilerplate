@@ -1,16 +1,12 @@
 package ua.anironglass.boilerplate.utils;
 
 
-public class TestNetworkUtils extends NetworkUtils {
+public final class TestNetworkUtils extends NetworkUtils {
 
     private boolean mIsConnected;
 
-    public TestNetworkUtils(boolean isConnected) {
-        mIsConnected = isConnected;
-    }
-
     public TestNetworkUtils() {
-        this(true);
+        mIsConnected = true;
     }
 
     @Override
