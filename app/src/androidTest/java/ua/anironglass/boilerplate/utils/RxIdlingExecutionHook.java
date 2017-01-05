@@ -36,4 +36,5 @@ public final class RxIdlingExecutionHook {
         RxJavaHooks.clear();
         RxJavaHooks.reset();
     }
+
 }
