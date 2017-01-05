@@ -43,7 +43,7 @@ public final class DatabaseHelperTest {
     private final DatabaseHelper mDatabaseHelper =
             new DatabaseHelper(new DbOpenHelper(RuntimeEnvironment.application));
 
-    @Rule public final RxSchedulersRule mOverrideSchedulersRule = new RxSchedulersRule();
+    @Rule public final RxSchedulersRule overrideSchedulersRule = new RxSchedulersRule();
 
     @Test
     public void shouldSetPhotos() {

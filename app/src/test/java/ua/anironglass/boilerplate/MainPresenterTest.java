@@ -35,7 +35,7 @@ public final class MainPresenterTest {
     private MainPresenter mMainPresenter;
     private TestNetworkUtils mTestNetworkUtils;
 
-    @Rule public final RxSchedulersRule mOverrideSchedulersRule = new RxSchedulersRule();
+    @Rule public final RxSchedulersRule overrideSchedulersRule = new RxSchedulersRule();
 
     @Before
     public void initialize() {

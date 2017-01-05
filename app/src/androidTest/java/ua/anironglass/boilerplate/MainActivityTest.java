@@ -29,8 +29,7 @@ import static org.mockito.Mockito.when;
 @RunWith(AndroidJUnit4.class)
 public final class MainActivityTest {
 
-    @Rule
-    public final ActivityTestRule<MainActivity> mMainActivityTestRule =
+    @Rule public final ActivityTestRule<MainActivity> mainActivityTestRule =
             new ActivityTestRule<MainActivity>(MainActivity.class, false, false) {
                 @Override
                 protected Intent getActivityIntent() {
@@ -53,7 +52,7 @@ public final class MainActivityTest {
                 .thenReturn(Observable.just(testPhotos));
 
         // Run: launch MainActivity
-        mMainActivityTestRule.launchActivity(null);
+        mainActivityTestRule.launchActivity(null);
 
         // Check: should show all photos
         int position = 0;

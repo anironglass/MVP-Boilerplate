@@ -15,7 +15,7 @@ public final class RxEventBusTest {
 
     private RxEventBus mEventBus;
 
-    @Rule public final RxSchedulersRule mRxSchedulersRule = new RxSchedulersRule();
+    @Rule public final RxSchedulersRule overrideSchedulersRule = new RxSchedulersRule();
 
     @Before
     public void initialize() {
@@ -64,4 +64,5 @@ public final class RxEventBusTest {
         // Finalize: close subscription
         testSubscriber.unsubscribe();
     }
+
 }
