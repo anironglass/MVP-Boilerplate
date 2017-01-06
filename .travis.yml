@@ -6,42 +6,42 @@ jdk: oraclejdk8
 
 env:
   global:
-    - API_LEVEL=25
-    - BUILD_TOOLS_VERSION=25.0.2
+    # wait for adb to connect to emulator
+    - ADB_INSTALL_TIMEOUT=10 # minutes (2 minutes by default)
+    - TARGET_API=25
+    - ANDROID_BUILD_TOOLS_VERSION=25.0.2
     - ABI=armeabi-v7a
-    - TAG=google_apis
-    - ANDROID_TARGET=android-$API_LEVEL
+    - ABI_TAG=google_apis
 
 os:
   - linux
 
 android:
   components:
+    - tools # to get the new `repository-11.xml`
     - platform-tools
-    - tools
-    - build-tools-$BUILD_TOOLS_VERSION
-    - android-25
-    - android-23
-    - android-21
-    - android-19
-    - android-14
-    - extra-android-m2repository
-    - extra-google-m2repository
-    - extra-android-support
+    - tools # to install Android SDK tools 25.1.x
+    - build-tools-$ANDROID_BUILD_TOOLS_VERSION
+    - android-$TARGET_API
+    # For Google APIs
+    - addon-google_apis-google-$TARGET_API
+    # Google Play Services
 #    - extra-google-google_play_services
-#    - extra-google-admob_ads_sdk
-#    - extra-google-gcm
-    - sys-img-$ABI-$TAG-$API_LEVEL
+    # Support library
+    - extra-android-support
+    # Latest artifacts in local repository
+    - extra-google-m2repository
+    - extra-android-m2repository
+    # Specify at least one system image
+    - sys-img-$ABI-$ABI_TAG-$TARGET_API
 
-before_install:
-  - chmod +x gradlew
-  
 script:
   - ./wait_for_emulator
-  - ./gradlew build connectedCheck
+  - ./gradlew clean check connectedCheck
  
 before_script:
-  - echo no | android create avd --force -n test -t $ANDROID_TARGET --abi $ABI --tag $TAG
+  # Create and start emulator
+  - echo no | android create avd --force -n test -t "android-"$TARGET_API --abi $ABI --tag $ABI_TAG
   - emulator -avd test -no-skin -no-audio -no-window &
   - android-wait-for-emulator
   - adb shell input keyevent 82 &
@@ -51,5 +51,5 @@ notifications:
  
 cache:
   directories:
-    - $HOME/.m2
-    - $HOME/.gradle
+    - ${TRAVIS_BUILD_DIR}/gradle/caches/
+    - ${TRAVIS_BUILD_DIR}/gradle/wrapper/dists/
