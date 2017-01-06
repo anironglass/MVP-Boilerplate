@@ -121,12 +121,13 @@ To quickly start a new project from this boilerplate follow the next steps:
   * Rename packages in `androidTest`, `commonTest`, `main`, `main/src/debug` and `test` using Android Studio.
   * In `app/build.gradle` file, `applicationId`.
   * In `src/main/AndroidManifest.xml` and `src/debug/AndroidManifest.xml`.
-* Change MainActivity activity label in `src/res/values/strings.xml`.
-* Change MainActivity and LeakCanary labels in `src/debug/res/values/strings.xml`.
+* Change MainActivity release label in `src/res/values/strings.xml`.
+* Change MainActivity and LeakCanary debug labels in `src/debug/res/values/strings.xml`.
 * Change DATABASE_NAME in `main/src/data/local/DbOpenHelper.java`.
 * Change PREF_FILE_NAME in `main/src/data/local/PreferencesHelper.java`.
 * Create a new git repository, [see GitHub tutorial](https://help.github.com/articles/adding-an-existing-project-to-github-using-the-command-line/).
 * Replace the example code with your app code following the same architecture.
+* In `app/build.gradle` add the signing config to enable release versions.
 * Update `proguard-rules.pro` to keep models (see TODO in file) and add extra rules to file if needed.
 * Update README with information relevant to the new project.
 * Update LICENSE to match the requirements of the new project.

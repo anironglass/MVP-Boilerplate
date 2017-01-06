@@ -2,7 +2,6 @@
 *.apk
 
 # Keystore files
-keystore/
 *.jks
 
 # Files for the Dalvik VM

@@ -3,8 +3,8 @@
 build/
 
 # Keystore files
-keystore/
 *.jks
+!/keystore/debug.jks
 
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio
 *iml
