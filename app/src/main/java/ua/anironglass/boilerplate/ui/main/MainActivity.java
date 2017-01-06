@@ -4,11 +4,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.constraint.ConstraintLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.RelativeLayout;
 
 import java.util.List;
 
@@ -29,7 +29,7 @@ public class MainActivity extends BaseActivity implements MainMvpView {
             "ua.anironglass.template.ui.main.MainActivity.EXTRA_TRIGGER_SYNC_FLAG";
 
     @BindView(R.id.recycler_view) RecyclerView mRecyclerView;
-    @BindView(R.id.content_view) ConstraintLayout mContentView;
+    @BindView(R.id.content_view) RelativeLayout mContentView;
     @BindView(R.id.swipe_refresh_layout) SwipeRefreshLayout mSwipeRefreshLayout;
     @Inject MainPresenter mMainPresenter;
     @Inject PhotosAdapter mPhotosAdapter;
