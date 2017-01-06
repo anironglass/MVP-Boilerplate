@@ -1,0 +1,72 @@
+language: android
+
+jdk: oraclejdk8
+
+env:
+  matrix:
+    - ANDROID_TARGET=android-25  ANDROID_ABI=armeabi-v7a
+  global:
+    # wait up to 10 minutes for adb to connect to emulator
+    - ADB_INSTALL_TIMEOUT=10
+
+os:
+  - linux
+
+android:
+  components:
+    # Check Android SDK tools: http://developer.android.com/tools/sdk/tools-notes.html
+    # Check Android SDK Platform-tools: http://developer.android.com/tools/revisions/platforms.html
+    - platform-tools
+    - tools
+
+    # Check BuildTools: http://developer.android.com/tools/revisions/build-tools.html
+    - build-tools-25.0.2
+
+    # The API to be used to compile
+    # Check APIs: http://developer.android.com/guide/topics/manifest/uses-sdk-element.html#ApiLevels
+    - android-25
+    - android-24
+    - android-23
+    - android-22
+    - android-21
+    - android-20
+    - android-19
+    - android-18
+    - android-17
+    - android-16
+    - android-15
+    - android-14
+
+    # The system images if you need to run emulator during your tests
+    - sys-img-armeabi-v7a-android-25
+    - sys-img-x86-android-25
+
+    # Google repository from which download the dependencies
+
+    # Check extras: http://developer.android.com/sdk/installing/adding-packages.html#GetSupportLib
+    - extra-android-m2repository
+    - extra-android-support
+
+    # Check more extras: http://developer.android.com/sdk/installing/adding-packages.html#GetGoogle
+    - extra-google-m2repository
+    - extra-google-google_play_services
+
+#    - extra-google-admob_ads_sdk
+#    - extra-google-gcm
+
+    # Source file
+    - source-25
+    - source-24
+    - source-23
+    - source-22
+    - source-21
+
+before_script:
+  # Create and start emulator
+  - echo no | android create avd --force -n Default -t $ANDROID_TARGET --abi $ANDROID_ABI
+  - emulator -avd test -no-skin -no-audio -no-window &
+  - adb wait-for-device
+  - adb shell input keyevent 82 &
+
+before_install:
+ - chmod +x gradlew
