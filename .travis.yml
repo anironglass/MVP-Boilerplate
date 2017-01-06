@@ -5,11 +5,14 @@ language: android
 jdk: oraclejdk8
 
 env:
-  matrix:
-    - ANDROID_TARGET=android-25  ANDROID_ABI=armeabi-v7a
   global:
     # wait up to 10 minutes for adb to connect to emulator
     - ADB_INSTALL_TIMEOUT=10
+    - API_LEVEL=25
+    - BUILD_TOOLS_VERSION=25.0.2
+    - ABI=armeabi-v7a
+    - TAG=google_apis
+    - ANDROID_TARGET=android-$API_LEVEL
 
 os:
   - linux
@@ -18,30 +21,30 @@ android:
   components:
     - platform-tools
     - tools
+    - build-tools-$BUILD_TOOLS_VERSION
     - android-25
     - android-23
     - android-21
     - android-19
     - android-14
-    - build-tools-25.0.2
     - extra-android-m2repository
     - extra-google-m2repository
     - extra-android-support
 #    - extra-google-google_play_services
 #    - extra-google-admob_ads_sdk
 #    - extra-google-gcm
-    - sys-img-armeabi-v7a-android-25
-    - sys-img-x86-android-25
+    - sys-img-$ABI-$TAG-$API_LEVEL
 
 before_install:
   - chmod +x gradlew
   
 script:
+  - ./wait_for_emulator
   - ./gradlew build connectedCheck
  
 before_script:
   # Create and start emulator
-  - echo no | android create avd --force -n test -t $ANDROID_TARGET --abi $ANDROID_ABI
+  - echo no | android create avd --force -n test -t ANDROID_TARGET --abi $ABI --tag $TAG
   - emulator -avd test -no-skin -no-audio -no-window &
   - android-wait-for-emulator
   - adb shell input keyevent 82 &
