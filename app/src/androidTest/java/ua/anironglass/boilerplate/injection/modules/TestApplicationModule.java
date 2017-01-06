@@ -1,4 +1,4 @@
-package ua.anironglass.boilerplate.injection.module;
+package ua.anironglass.boilerplate.injection.modules;
 
 import android.app.Application;
 import android.content.Context;

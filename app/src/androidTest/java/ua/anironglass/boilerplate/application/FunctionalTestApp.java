@@ -1,15 +1,19 @@
-package ua.anironglass.boilerplate;
+package ua.anironglass.boilerplate.application;
 
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.WindowManager;
 
-import ua.anironglass.boilerplate.injection.component.DaggerTestApplicationComponent;
+import ua.anironglass.boilerplate.App;
 import ua.anironglass.boilerplate.injection.components.ApplicationComponent;
-import ua.anironglass.boilerplate.injection.module.TestApplicationModule;
+import ua.anironglass.boilerplate.injection.components.DaggerTestApplicationComponent;
+import ua.anironglass.boilerplate.injection.modules.TestApplicationModule;
 
-public class TestApp extends App {
+/**
+ * Application that provides TestApplicationComponent and unlocks devise for UI tests
+ */
+public class FunctionalTestApp extends App {
 
     @Override
     public void onCreate() {

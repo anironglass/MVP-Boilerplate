@@ -16,6 +16,7 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import rx.observers.TestSubscriber;
+import ua.anironglass.boilerplate.application.UnitTestApp;
 import ua.anironglass.boilerplate.data.local.Database;
 import ua.anironglass.boilerplate.data.local.DatabaseHelper;
 import ua.anironglass.boilerplate.data.local.DbOpenHelper;
@@ -31,7 +32,7 @@ import static com.google.common.truth.Truth.assertThat;
  */
 @RunWith(RobolectricTestRunner.class)
 @Config(
-        application = TestApp.class,
+        application = UnitTestApp.class,
         constants = BuildConfig.class,
         sdk = RobolectricDefaultConfig.EMULATE_SDK
 )

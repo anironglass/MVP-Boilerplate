@@ -1,5 +1,6 @@
 package ua.anironglass.boilerplate;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.espresso.contrib.RecyclerViewActions;
@@ -13,6 +14,7 @@ import org.junit.runner.RunWith;
 import java.util.List;
 
 import rx.Observable;
+import ua.anironglass.boilerplate.application.FunctionalTestApp;
 import ua.anironglass.boilerplate.data.DataManager;
 import ua.anironglass.boilerplate.data.model.Photo;
 import ua.anironglass.boilerplate.ui.main.MainActivity;
@@ -45,7 +47,8 @@ public final class MainActivityTest {
     public void shouldShowsListOfPhotos() {
         // Initialize: prepare test photos
         List<Photo> testPhotos = TestDataFactory.getRandomPhotos();
-        DataManager mockedDataManager = TestApp.get(InstrumentationRegistry.getTargetContext())
+        Context testContext = InstrumentationRegistry.getTargetContext();
+        DataManager mockedDataManager = FunctionalTestApp.get(testContext)
                 .getComponent()
                 .dataManager();
         when(mockedDataManager.getPhotos())

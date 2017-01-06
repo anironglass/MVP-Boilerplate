@@ -57,12 +57,12 @@ android {
 
     sourceSets {
         // Share common test classes between unit test and instrumental test
-        def commonTestDir = "src/commonTest/java/"
+        def sharedTestDir = "src/sharedTest/java/"
         androidTest {
-            java.srcDirs += commonTestDir
+            java.srcDirs += sharedTestDir
         }
         test {
-            java.srcDirs += commonTestDir
+            java.srcDirs += sharedTestDir
         }
     }
 
@@ -123,5 +123,4 @@ dependencies {
     testCompile "junit:junit:$JUNIT_VERSION"
     testCompile "org.mockito:mockito-core:$MOCKITO_VERSION"
     testCompile "org.robolectric:robolectric:$ROBOLECTRIC_VERSION"
-    testAnnotationProcessor "com.google.dagger:dagger-compiler:$DAGGER2_VERSION"
 }

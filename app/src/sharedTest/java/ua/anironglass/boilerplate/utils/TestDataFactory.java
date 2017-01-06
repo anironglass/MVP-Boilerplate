@@ -17,7 +17,7 @@ import ua.anironglass.boilerplate.data.model.Photo;
  */
 public final class TestDataFactory {
 
-    private static final int DEFAULT_QUANTITY = 50;
+    private static final int DEFAULT_NUMBER = 50;
     private static final int TEST_ALBUM_ID = 1;
     private static final int TEST_FIRST_ID = 1;
     private static final AtomicInteger NEXT_ID = new AtomicInteger(TEST_FIRST_ID);
@@ -27,19 +27,22 @@ public final class TestDataFactory {
     private static final String TEST_THUMBNAIL_URL = "http://placehold.it/150/";
 
 
-    public static List<Photo> getRandomPhotos() {
+    @SuppressWarnings("WeakerAccess")
+    public static List<Photo> getRandomPhotos(@IntRange(from = 1) int number) {
         List<Photo> photos = new ArrayList<>();
-        for (int i = 0; i < DEFAULT_QUANTITY; i++) {
+        for (int i = 0; i < number; i++) {
             photos.add(getRandomPhoto());
         }
         return photos;
     }
 
+    public static List<Photo> getRandomPhotos() {
+        return getRandomPhotos(DEFAULT_NUMBER);
+    }
+
     public static Photo getRandomPhoto(@NonNull String title,
                                        @IntRange(from = 1, to = 100) int albumId) {
-        Random random = new Random();
-        int randomColor = random.nextInt(0xFFFFFF + 1);
-        String randomColorCode = String.format(Locale.getDefault(), "#%06x", randomColor);
+        String randomColorCode = getRandomColorCode();
         return Photo.builder()
                 .setAlbumId(albumId)
                 .setId(NEXT_ID.getAndIncrement())
@@ -52,6 +55,13 @@ public final class TestDataFactory {
     @SuppressWarnings("WeakerAccess")
     public static Photo getRandomPhoto() {
         return getRandomPhoto(LOREM_IPSUM, TEST_ALBUM_ID);
+    }
+
+    @NonNull
+    private static String getRandomColorCode() {
+        Random random = new Random();
+        int randomColor = random.nextInt(0xFFFFFF + 1);
+        return String.format(Locale.getDefault(), "#%06x", randomColor);
     }
 
 }

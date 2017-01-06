@@ -9,6 +9,7 @@ import org.robolectric.RobolectricTestRunner;
 import org.robolectric.RuntimeEnvironment;
 import org.robolectric.annotation.Config;
 
+import ua.anironglass.boilerplate.application.UnitTestApp;
 import ua.anironglass.boilerplate.data.local.PreferencesHelper;
 import ua.anironglass.boilerplate.utils.RobolectricDefaultConfig;
 
@@ -17,7 +18,7 @@ import static com.google.common.truth.Truth.assertThat;
 
 @RunWith(RobolectricTestRunner.class)
 @Config(
-        application = TestApp.class,
+        application = UnitTestApp.class,
         manifest = Config.NONE,
         sdk = RobolectricDefaultConfig.EMULATE_SDK
 )

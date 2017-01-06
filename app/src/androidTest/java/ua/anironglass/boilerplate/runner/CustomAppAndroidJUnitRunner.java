@@ -4,7 +4,7 @@ import android.app.Application;
 import android.content.Context;
 import android.support.test.runner.AndroidJUnitRunner;
 
-import ua.anironglass.boilerplate.TestApp;
+import ua.anironglass.boilerplate.application.FunctionalTestApp;
 
 
 /**
@@ -15,7 +15,7 @@ class CustomAppAndroidJUnitRunner extends AndroidJUnitRunner {
     @Override
     public Application newApplication(ClassLoader loader, String className, Context context)
             throws InstantiationException, IllegalAccessException, ClassNotFoundException {
-        return super.newApplication(loader, TestApp.class.getName(), context);
+        return super.newApplication(loader, FunctionalTestApp.class.getName(), context);
     }
 
 }

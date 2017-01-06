@@ -8,6 +8,7 @@ import org.robolectric.manifest.AndroidManifest;
 import org.robolectric.res.Fs;
 import org.robolectric.res.FsFile;
 
+import ua.anironglass.boilerplate.application.UnitTestApp;
 import ua.anironglass.boilerplate.utils.RobolectricDefaultConfig;
 
 import static com.google.common.truth.Truth.assertThat;
@@ -15,7 +16,7 @@ import static com.google.common.truth.Truth.assertThat;
 
 @RunWith(RobolectricTestRunner.class)
 @Config(
-        application = TestApp.class,
+        application = UnitTestApp.class,
         manifest = Config.NONE,
         sdk = RobolectricDefaultConfig.EMULATE_SDK
 )
