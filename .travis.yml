@@ -11,10 +11,14 @@ env:
 
 android:
   components:
-    - platform-tools
     - tools
     - android-25
     - build-tools-25.0.2
+    - platform-tools
+    # Duplicated for fixing travis platform-tools error
+    # https://github.com/travis-ci/travis-ci/issues/6699
+    - build-tools-25.0.2
+    - android-25
     - extra-android-m2repository
     - extra-android-support
     - sys-img-armeabi-v7a-android-18
