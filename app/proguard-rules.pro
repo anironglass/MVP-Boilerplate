@@ -9,9 +9,6 @@
 
 # Add any project specific keep options here:
 
-# https://github.com/square/retrofit/issues/1584
--keepnames class rx.Single
-
 # TODO change to match your package model
 # Keep non static or private fields of models so Gson can find their names
 -keepclassmembers class ua.anironglass.boilerplate.data.model.** {

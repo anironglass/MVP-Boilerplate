@@ -17,3 +17,6 @@
 -keepclassmembers class rx.internal.util.unsafe.BaseLinkedQueueConsumerNodeRef {
     rx.internal.util.atomic.LinkedQueueNode consumerNode;
 }
+
+# https://github.com/square/retrofit/issues/1584
+-keepnames class rx.Single
