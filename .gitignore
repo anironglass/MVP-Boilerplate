@@ -1,9 +1,6 @@
 # Built application files
 *.apk
 
-# Keystore files
-*.jks
-
 # Files for the Dalvik VM
 *.dex
 

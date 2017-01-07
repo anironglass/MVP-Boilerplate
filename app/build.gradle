@@ -22,8 +22,8 @@ android {
     }
 
     signingConfigs {
-        // You must set up an environment var before release signing
-        // Run: export APP_KEY={password}
+        // TODO You must set up a system environment var APP_KEY
+        // TODO You should add APP_KEY to Travis environment variables
         // TODO Add your release keystore in /keystore folder
         release {
             storeFile file('keystore/release.jks')
