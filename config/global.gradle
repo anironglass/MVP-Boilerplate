@@ -24,27 +24,3 @@ ext {
     TIMBER_VERSION = '4.4.0'
     TRUTH_VERSION = '0.31'
 }
-
-android {
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-
-    // Suppress Lint errors
-    lintOptions {
-        disable 'InvalidPackage'
-    }
-
-    // Resolve gradle conflicts with dependencies
-    configurations.all {
-        resolutionStrategy.force "com.android.support:appcompat-v7:$SUPPORT_LIBRARY_VERSION"
-        resolutionStrategy.force "com.android.support:design:$SUPPORT_LIBRARY_VERSION"
-        resolutionStrategy.force "com.google.code.findbugs:jsr305:$FIND_BUGS_VERSION"
-    }
-}
-
-// Log out test results to console
-tasks.matching {it instanceof Test}.all {
-    testLogging.events = ["failed", "passed", "skipped"]
-}

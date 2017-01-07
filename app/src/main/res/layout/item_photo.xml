@@ -14,12 +14,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:gravity="center_vertical" >
+        android:gravity="center_vertical"
+        tools:ignore="UseCompoundDrawables" >
 
         <ImageView
             android:id="@+id/photo_thumbnail"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+            android:layout_width="@dimen/photos_thumbnail_size"
+            android:layout_height="@dimen/photos_thumbnail_size"
             android:layout_marginTop="@dimen/normal_margin"
             android:layout_marginBottom="@dimen/normal_margin"
             android:layout_marginStart="@dimen/normal_margin"

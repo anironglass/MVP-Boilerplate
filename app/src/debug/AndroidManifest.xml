@@ -10,7 +10,8 @@
 
     <application
         android:name=".DebugApp"
-        tools:replace="android:name">
+        android:allowBackup="false"
+        tools:replace="android:name, android:allowBackup" >
     </application>
 
 </manifest>

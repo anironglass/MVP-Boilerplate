@@ -21,6 +21,11 @@ android {
         vectorDrawables.useSupportLibrary = true
     }
 
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
     signingConfigs {
         // TODO You must set up a system environment var APP_KEY
         // TODO You should add APP_KEY to Travis environment variables
@@ -66,6 +71,30 @@ android {
         test {
             java.srcDirs += sharedTestDir
         }
+    }
+
+    //noinspection GroovyMissingReturnStatement
+    lintOptions {
+        warningsAsErrors true
+        abortOnError true // Fail early.
+
+        disable 'GoogleAppIndexingWarning' // App does not have deep linking
+        disable 'InvalidPackage' // Okio references java.nio that does not presented in Android SDK
+    }
+
+    // This allows us see tests execution progress in the output on the CI
+    testOptions.unitTests.all {
+        testLogging {
+            events 'passed', 'skipped', 'failed', 'standardOut', 'standardError'
+            exceptionFormat 'full'
+        }
+    }
+
+    // Resolve gradle conflicts with dependencies
+    configurations.all {
+        resolutionStrategy.force "com.android.support:appcompat-v7:$SUPPORT_LIBRARY_VERSION"
+        resolutionStrategy.force "com.android.support:design:$SUPPORT_LIBRARY_VERSION"
+        resolutionStrategy.force "com.google.code.findbugs:jsr305:$FIND_BUGS_VERSION"
     }
 
     dataBinding {
