@@ -3,7 +3,7 @@ apply plugin: 'com.getkeepsafe.dexcount'
 apply plugin: 'me.tatarka.retrolambda'
 apply from: "$config/global.gradle"
 apply from: "$config/dependencies_check.gradle"
-apply from: "$config/quality/quality.gradle"
+apply from: "$config/quality.gradle"
 
 android {
     compileSdkVersion 25
@@ -15,6 +15,8 @@ android {
         targetSdkVersion 25
         versionCode 1000 // Major -> Millions, Minor -> Thousands, Bugfix -> Hundreds
         versionName '0.1.0'
+        // Make generated apks contain application id and version name
+        archivesBaseName = "${applicationId}-${versionName}"
         testInstrumentationRunner "${applicationId}.runner.RxAndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }
@@ -40,11 +42,11 @@ android {
 
     buildTypes {
         release {
-            //TODO uncomment line below after adding your release keystore
-            //signingConfig signingConfigs.release
+            signingConfig signingConfigs.release
             minifyEnabled true
             shrinkResources true
             zipAlignEnabled true
+            proguardFiles file("$config/proguard").listFiles().toList().toArray()
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
 
