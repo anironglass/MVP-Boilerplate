@@ -75,8 +75,12 @@ android {
 
     //noinspection GroovyMissingReturnStatement
     lintOptions {
+        // Generate a text report and write it to 'stdout'
+        textReport true
+        textOutput 'stdout'
+
         warningsAsErrors true
-        abortOnError true // Fail early.
+        abortOnError true // Fail early
 
         disable 'GoogleAppIndexingWarning' // App does not have deep linking
         disable 'InvalidPackage' // Okio references java.nio that does not presented in Android SDK
