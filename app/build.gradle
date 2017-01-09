@@ -1,8 +1,8 @@
 apply plugin: 'com.android.application'
 apply plugin: 'me.tatarka.retrolambda'
-apply from: "$config/global.gradle"
+apply from: "$config/codecov.gradle"
 apply from: "$config/dependencies_check.gradle"
-apply from: "$config/jacoco.gradle"
+apply from: "$config/global.gradle"
 apply from: "$config/quality.gradle"
 
 android {
