@@ -43,6 +43,10 @@ subprojects {
             project.android.dexOptions.preDexLibraries = rootProject.ext.preDexLibs
         }
     }
+
+    afterEvaluate {
+        dependencyUpdates.outputDir = new File("${projectDir}/build/reports/versions")
+    }
 }
 
 ext.config = "$rootProject.projectDir/config/"
