@@ -1,4 +1,4 @@
-# Android Project Boilerplate
+# Android Project Boilerplate [![Build Status](https://travis-ci.org/AnironGlass/MVP-Boilerplate.svg?branch=master)](https://travis-ci.org/AnironGlass/MVP-Boilerplate "Travis CI") [![codecov](https://codecov.io/gh/AnironGlass/MVP-Boilerplate/branch/master/graph/badge.svg)](https://codecov.io/gh/AnironGlass/MVP-Boilerplate "Codecov.io")
 
 Boilerplate for new Android app based on [Ribot](https://github.com/ribot/android-boilerplate) and [Google](https://github.com/googlesamples/android-architecture/) projects and some common sense
 
