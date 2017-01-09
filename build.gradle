@@ -1,5 +1,7 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
+import com.android.build.gradle.internal.tasks.AndroidTestTask
+
 buildscript {
     repositories {
         jcenter()
@@ -46,6 +48,16 @@ subprojects {
 
     afterEvaluate {
         dependencyUpdates.outputDir = new File("${projectDir}/build/reports/versions")
+
+        // Log instrumentation tests results
+        tasks.withType(AndroidTestTask) { task ->
+            task.doFirst {
+                logging.level = LogLevel.INFO
+            }
+            task.doLast {
+                logging.level = LogLevel.LIFECYCLE
+            }
+        }
     }
 }
 
