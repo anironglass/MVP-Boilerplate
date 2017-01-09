@@ -34,8 +34,16 @@ task wrapper(type: Wrapper) {
     distributionUrl = distributionUrl.replace("bin", "all")
 }
 
-ext {
-    config = "$rootProject.projectDir/config/"
+ext.preDexLibs = !project.hasProperty('disablePreDex')
+subprojects {
+    project.plugins.whenPluginAdded { plugin ->
+        if ('com.android.build.gradle.AppPlugin'.equals(plugin.class.name)
+                || 'com.android.build.gradle.LibraryPlugin'.equals(plugin.class.name)) {
+            // enable or disable pre-dexing
+            project.android.dexOptions.preDexLibraries = rootProject.ext.preDexLibs
+        }
+    }
 }
 
+ext.config = "$rootProject.projectDir/config/"
 apply from: "$config/build_time_details.gradle"
