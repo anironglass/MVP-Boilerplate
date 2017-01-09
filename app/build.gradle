@@ -1,5 +1,4 @@
 apply plugin: 'com.android.application'
-apply plugin: 'com.getkeepsafe.dexcount'
 apply plugin: 'me.tatarka.retrolambda'
 apply from: "$config/global.gradle"
 apply from: "$config/dependencies_check.gradle"
@@ -94,13 +93,6 @@ android {
         }
     }
 
-    // Resolve gradle conflicts with dependencies
-    configurations.all {
-        resolutionStrategy.force "com.android.support:appcompat-v7:$SUPPORT_LIBRARY_VERSION"
-        resolutionStrategy.force "com.android.support:design:$SUPPORT_LIBRARY_VERSION"
-        resolutionStrategy.force "com.google.code.findbugs:jsr305:$FIND_BUGS_VERSION"
-    }
-
     dataBinding {
         enabled = true
     }
@@ -157,4 +149,25 @@ dependencies {
     testCompile "junit:junit:$JUNIT_VERSION"
     testCompile "org.mockito:mockito-core:$MOCKITO_VERSION"
     testCompile "org.robolectric:robolectric:$ROBOLECTRIC_VERSION"
+}
+
+// Resolve gradle conflicts with dependencies
+configurations.all {
+    resolutionStrategy.force "com.android.support:appcompat-v7:$SUPPORT_LIBRARY_VERSION"
+    resolutionStrategy.force "com.android.support:design:$SUPPORT_LIBRARY_VERSION"
+    resolutionStrategy.force "com.google.code.findbugs:jsr305:$FIND_BUGS_VERSION"
+}
+
+// Check if the build requires dex count
+def withDexcount = project.hasProperty('withDexcount')
+if (withDexcount) {
+    apply plugin: 'com.getkeepsafe.dexcount'
+
+    dexcount {
+        format = 'list'
+        includeFieldCount = true
+        includeTotalMethodCount = true
+        verbose = false
+        maxTreeDepth = Integer.MAX_VALUE
+    }
 }
