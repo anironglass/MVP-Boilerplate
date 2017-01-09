@@ -26,6 +26,11 @@ allprojects {
     repositories {
         jcenter()
     }
+
+    // Workaround to prevent Gradle from stealing focus from other apps during tests run/etc.
+    tasks.withType(JavaForkOptions) {
+        jvmArgs '-Djava.awt.headless=true'
+    }
 }
 
 task clean(type: Delete) {
