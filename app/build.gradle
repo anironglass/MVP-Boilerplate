@@ -1,22 +1,24 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.github.ben-manes.versions'
 apply plugin: 'me.tatarka.retrolambda'
-apply from: "$config/codecov.gradle"
-apply from: "$config/dependencies_check.gradle"
-apply from: "$config/global.gradle"
+apply from: "$config/codeCoverage.gradle"
 apply from: "$config/quality.gradle"
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion '25.0.2'
+    // Declared in dependencies.gradle in the root of the project.
+    compileSdkVersion versions.compileSdk
+    buildToolsVersion versions.buildTools
 
     defaultConfig {
         applicationId "ua.anironglass.boilerplate"
-        minSdkVersion 14
-        targetSdkVersion 25
-        versionCode 1000 // Major -> Millions, Minor -> Thousands, Bugfix -> Hundreds
-        versionName '0.1.0'
+        minSdkVersion versions.minSdk
+        targetSdkVersion versions.targetSdk
+        // Notice that you may want to use BUILD_NUMBER from CI in real project with own CI
+        versionCode versions.code
+        versionName versions.name
         // Make generated apks contain application id and version name
         archivesBaseName = "${applicationId}-${versionName}"
+        // Notice that we have custom Instrumentation test runner to change application class
         testInstrumentationRunner "${applicationId}.runner.RxAndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }
@@ -53,10 +55,15 @@ android {
             zipAlignEnabled true
             proguardFiles file("$config/proguard").listFiles().toList().toArray()
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            // Enables code coverage with Jacoco only for instrumentation tests
+            // Coverage for JVM tests done by config/codecov.gradle
+            testCoverageEnabled true
         }
 
         debug {
             versionNameSuffix ".debug"
+            // Enables code coverage with Jacoco only for instrumentation tests
+            // Coverage for JVM tests done by config/codecov.gradle
             testCoverageEnabled true
             debuggable true
         }
@@ -99,64 +106,73 @@ android {
     }
 }
 
+// Libraries declared in config/dependencies.gradle
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile libraries.supportAnnotations
+    compile libraries.supportAppCompat
+    compile libraries.supportCardView
+    compile libraries.supportDesign
+    compile libraries.supportRecyclerView
 
-    // App's dependencies
-    compile "com.android.support:appcompat-v7:$SUPPORT_LIBRARY_VERSION"
-    compile "com.android.support:cardview-v7:$SUPPORT_LIBRARY_VERSION"
-    compile "com.android.support:design:$SUPPORT_LIBRARY_VERSION"
-    compile "com.android.support:recyclerview-v7:$SUPPORT_LIBRARY_VERSION"
-    compile "com.android.support:support-annotations:$SUPPORT_LIBRARY_VERSION"
-    compile "com.github.bumptech.glide:glide:$GLIDE_VERSION"
-    compile "com.google.dagger:dagger:$DAGGER2_VERSION"
-    compile "com.jakewharton:butterknife:$BUTTER_KNIFE_VERSION"
-    compile "com.jakewharton.timber:timber:$TIMBER_VERSION"
-    compile "com.squareup.okhttp3:logging-interceptor:$OKHTTP3_VERSION"
-    compile "com.squareup.sqlbrite:sqlbrite:$SQL_BRITE_VERSION"
-    compile "com.squareup.retrofit2:retrofit:$RETROFIT2_VERSION"
-    compile "com.squareup.retrofit2:adapter-rxjava:$RETROFIT2_VERSION"
-    compile "com.squareup.retrofit2:converter-gson:$RETROFIT2_VERSION"
-    compile "com.trello:rxlifecycle:$RXLIFECYCLE_VERSION"
-    compile "com.trello:rxlifecycle-android:$RXLIFECYCLE_VERSION"
-    compile "com.trello:rxlifecycle-components:$RXLIFECYCLE_VERSION"
-    compile "io.reactivex:rxandroid:$RXANDROID_VERSION"
-    compile "io.reactivex:rxjava:$RXJAVA_VERSION"
-    provided "org.glassfish:javax.annotation:$JAVAX_VERSION"
-    annotationProcessor "com.google.dagger:dagger-compiler:$DAGGER2_VERSION"
-    annotationProcessor "com.jakewharton:butterknife-compiler:$BUTTER_KNIFE_VERSION"
+    compile libraries.dagger2
+    annotationProcessor libraries.dagger2Compiler
+    androidTestAnnotationProcessor libraries.dagger2Compiler
 
-    // App's debug dependencies
-    debugCompile "com.squareup.leakcanary:leakcanary-android:$LEAK_CANARY_VERSION"
+    compile libraries.rxJava
+    compile libraries.rxAndroid
+    compile libraries.rxLifecycle
+    compile libraries.rxLifecycleAndroid
+    compile libraries.rxLifecycleComponents
 
-    // App's release dependencies
-    releaseCompile "com.squareup.leakcanary:leakcanary-android-no-op:$LEAK_CANARY_VERSION"
+    compile libraries.gson
+    compile libraries.okHttp3
+    compile libraries.retrofit2
+    compile libraries.retrofit2GsonConverter
+    compile libraries.retrofit2RxJavaAdapter
 
-    // Instrumentation test dependencies
-    androidTestCompile "com.android.support:support-annotations:$SUPPORT_LIBRARY_VERSION"
-    androidTestCompile "com.android.support.test.espresso:espresso-contrib:$ESPRESSO_VERSION"
-    androidTestCompile "com.android.support.test.espresso:espresso-core:$ESPRESSO_VERSION"
-    androidTestCompile "com.android.support.test.espresso:espresso-idling-resource:$ESPRESSO_VERSION"
-    androidTestCompile "com.android.support.test.espresso:espresso-intents:$ESPRESSO_VERSION"
-    androidTestCompile "com.android.support.test:rules:$SUPPORT_TEST_RUNNER_VERSION"
-    androidTestCompile "com.android.support.test:runner:$SUPPORT_TEST_RUNNER_VERSION"
-    androidTestCompile "junit:junit:$JUNIT_VERSION"
-    androidTestCompile "org.droidparts.dexmaker:dexmaker-mockito:$DEXMAKER_VERSION"
-    androidTestCompile "org.mockito:mockito-core:$MOCKITO_VERSION"
-    androidTestAnnotationProcessor "com.google.dagger:dagger-compiler:$DAGGER2_VERSION"
+    compile libraries.butterKnife
+    annotationProcessor libraries.butterKnifeCompiler
+
+    compile libraries.glide
+    compile libraries.sqlBrite
+    compile libraries.timber
+
+    // Developer tools
+    compile libraries.okHttpLoggingInterceptor
+    debugCompile libraries.leakCanary
+    releaseCompile libraries.leakCanaryNoOp
 
     // Unit tests dependencies
-    testCompile "com.google.truth:truth:$TRUTH_VERSION"
-    testCompile "junit:junit:$JUNIT_VERSION"
-    testCompile "org.mockito:mockito-core:$MOCKITO_VERSION"
-    testCompile "org.robolectric:robolectric:$ROBOLECTRIC_VERSION"
+    testCompile libraries.junit4
+    testCompile libraries.mockitoCore
+    testCompile libraries.robolectric
+    testCompile libraries.truth
+
+    // Instrumentation test dependencies
+    androidTestCompile libraries.supportTestRunner
+    androidTestCompile libraries.supportTestRules
+    androidTestCompile libraries.espressoCore
+    androidTestCompile (libraries.espressoContrib) {
+        // Causes IncompatibleClassChangeError
+        exclude module: 'support-annotations'
+        exclude module: 'recyclerview-v7'
+        exclude module: 'support-v4'
+    }
+    androidTestCompile libraries.mockitoCore
+    androidTestCompile libraries.dexMaker
 }
 
 // Resolve gradle conflicts with dependencies
 configurations.all {
-    resolutionStrategy.force "com.android.support:appcompat-v7:$SUPPORT_LIBRARY_VERSION"
-    resolutionStrategy.force "com.android.support:design:$SUPPORT_LIBRARY_VERSION"
-    resolutionStrategy.force "com.google.code.findbugs:jsr305:$FIND_BUGS_VERSION"
+    // Force our version of libraries
+    resolutionStrategy {
+        // Conflict between app and rxLifecycle library
+        force libraries.findBugs
+        // Conflict between app and androidTest dependency resolution
+        force libraries.supportAnnotations
+        force libraries.supportAppCompat
+        force libraries.supportDesign
+    }
 }
 
 // Check if the build requires dex count

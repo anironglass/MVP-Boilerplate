@@ -2,23 +2,40 @@
 
 import com.android.build.gradle.internal.tasks.AndroidTestTask
 
+ext.config = "$rootProject.projectDir/config/"
+apply from: "$config/dependencies.gradle"
+apply from: "$config/buildTimeDetails.gradle"
+
 buildscript {
+    // Gradle will not find vars defined in an external file when referring to them
+    // in the buildscript block, unless you link it from the buildscript block, too.
+    apply from: "$rootProject.projectDir/config/dependencies.gradle"
+
     repositories {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.2.3'
-        classpath 'com.getkeepsafe.dexcount:dexcount-gradle-plugin:0.6.2'
-        classpath 'com.github.ben-manes:gradle-versions-plugin:0.13.0'
-        classpath 'me.tatarka:gradle-retrolambda:3.4.0'
-        classpath 'me.tatarka.retrolambda.projectlombok:lombok.ast:0.2.3.a2'
-        classpath 'org.jacoco:org.jacoco.core:0.7.8'
+        // See config/dependencies.gradle for declaration of plugins.
 
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
+        classpath gradlePlugins.android
+
+        // Backport of some Java 8 language features such as Lambdas and method references.
+        classpath gradlePlugins.retrolambda
+
+        // Needed for Lint + Retrolambda.
+        classpath gradlePlugins.lombok
+
+        // Code coverage.
+        classpath gradlePlugins.jacoco
+
+        // Method count plugin for android projects
+        classpath gradlePlugins.dexcount
+
+        // Check latest version of dependencies, task: dependencyUpdates
+        classpath gradlePlugins.versions
     }
 
-    // Exclude the version that the android plugin depends on.
+    // Part of workaround for Lint + Retrolambda.
     configurations.classpath.exclude group: 'com.android.tools.external.lombok'
 }
 
@@ -66,6 +83,3 @@ subprojects {
         }
     }
 }
-
-ext.config = "$rootProject.projectDir/config/"
-apply from: "$config/build_time_details.gradle"

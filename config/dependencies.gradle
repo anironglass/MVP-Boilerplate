@@ -1,0 +1,100 @@
+ext.versions = [
+        // Major -> Millions, Minor -> Thousands, Bugfix -> Hundreds
+        // E.g 1.3.72 == 1003072
+        code                         : 1000,
+        name                         : '0.1.0',
+
+        minSdk                       : 14,
+        targetSdk                    : 25,
+        compileSdk                   : 25,
+        buildTools                   : '25.0.2',
+
+        androidGradlePlugin          : '2.2.3',
+        dexcountPlugin               : '0.6.2',
+        jacocoGradlePlugin           : '0.7.8',
+        lombokGradlePlugin           : '0.2.3.a2',
+        retrolambdaGradlePlugin      : '3.4.0',
+        versionsGradlePlugin         : '0.13.0',
+
+        butterKnife                  : '8.4.0',
+        dagger2                      : '2.8',
+        glide                        : '3.7.0',
+        gson                         : '2.7',
+        okHttp3                      : '3.5.0',
+        retrofit2                    : '2.1.0',
+        rxJava                       : '1.2.5',
+        rxAndroid                    : '1.2.1',
+        rxLifecycle                  : '1.0',
+        sqlBrite                     : '1.1.1',
+        supportLibs                  : '25.1.0',
+        timber                       : '4.4.0',
+
+        checkStyle                   : '7.4',
+        findBugs                     : '3.0.1',
+        leakCanary                   : '1.5',
+
+        dexMaker                     : '1.5',
+        espresso                     : '2.2.2',
+        junit4                       : '4.12',
+        mockito                      : '2.5.5',
+        robolectric                  : '3.2.1',
+        supportTestRunner            : '0.5',
+        truth                        : '0.31',
+]
+
+ext.gradlePlugins = [
+        android          : "com.android.tools.build:gradle:$versions.androidGradlePlugin",
+        retrolambda      : "me.tatarka:gradle-retrolambda:$versions.retrolambdaGradlePlugin",
+        lombok           : "me.tatarka.retrolambda.projectlombok:lombok.ast:$versions.lombokGradlePlugin",
+        jacoco           : "org.jacoco:org.jacoco.core:$versions.jacocoGradlePlugin",
+        dexcount         : "com.getkeepsafe.dexcount:dexcount-gradle-plugin:$versions.dexcountPlugin",
+        versions         : "com.github.ben-manes:gradle-versions-plugin:$versions.versionsGradlePlugin",
+]
+
+ext.libraries = [
+        dagger2                 : "com.google.dagger:dagger:$versions.dagger2",
+        dagger2Compiler         : "com.google.dagger:dagger-compiler:$versions.dagger2",
+
+        rxJava                  : "io.reactivex:rxjava:$versions.rxJava",
+        rxAndroid               : "io.reactivex:rxandroid:$versions.rxAndroid",
+        rxLifecycle             : "com.trello:rxlifecycle:$versions.rxLifecycle",
+        rxLifecycleAndroid      : "com.trello:rxlifecycle-android:$versions.rxLifecycle",
+        rxLifecycleComponents   : "com.trello:rxlifecycle-components:$versions.rxLifecycle",
+
+        okHttp3                 : "com.squareup.okhttp3:okhttp:$versions.okHttp3",
+        okHttpLoggingInterceptor: "com.squareup.okhttp3:logging-interceptor:$versions.okHttp3",
+        retrofit2               : "com.squareup.retrofit2:retrofit:$versions.retrofit2",
+        retrofit2GsonConverter  : "com.squareup.retrofit2:converter-gson:$versions.retrofit2",
+        retrofit2RxJavaAdapter  : "com.squareup.retrofit2:adapter-rxjava:$versions.retrofit2",
+        gson                    : "com.google.code.gson:gson:$versions.gson",
+
+        supportAnnotations      : "com.android.support:support-annotations:$versions.supportLibs",
+        supportAppCompat        : "com.android.support:appcompat-v7:$versions.supportLibs",
+        supportDesign           : "com.android.support:design:$versions.supportLibs",
+        supportRecyclerView     : "com.android.support:recyclerview-v7:$versions.supportLibs",
+        supportCardView         : "com.android.support:cardview-v7:$versions.supportLibs",
+
+        butterKnife             : "com.jakewharton:butterknife:$versions.butterKnife",
+        butterKnifeCompiler     : "com.jakewharton:butterknife-compiler:$versions.butterKnife",
+
+        glide                   : "com.github.bumptech.glide:glide:$versions.glide",
+        sqlBrite                : "com.squareup.sqlbrite:sqlbrite:$versions.sqlBrite",
+        timber                  : "com.jakewharton.timber:timber:$versions.timber",
+
+        // Developer Tools
+        checkStyle              : "com.puppycrawl.tools:checkstyle:$versions.checkStyle",
+        findBugs                : "com.google.code.findbugs:jsr305:$versions.findBugs",
+        leakCanary              : "com.squareup.leakcanary:leakcanary-android:$versions.leakCanary",
+        leakCanaryNoOp          : "com.squareup.leakcanary:leakcanary-android-no-op:$versions.leakCanary",
+
+        // Test dependencies
+        dexMaker                : "org.droidparts.dexmaker:dexmaker-mockito:$versions.dexMaker",
+        junit4                  : "junit:junit:$versions.junit4",
+        robolectric             : "org.robolectric:robolectric:$versions.robolectric",
+        mockitoCore             : "org.mockito:mockito-core:$versions.mockito",
+        supportTestRunner       : "com.android.support.test:runner:$versions.supportTestRunner",
+        supportTestRules        : "com.android.support.test:rules:$versions.supportTestRunner",
+        espressoCore            : "com.android.support.test.espresso:espresso-core:$versions.espresso",
+        espressoContrib         : "com.android.support.test.espresso:espresso-contrib:$versions.espresso",
+        truth                   : "com.google.truth:truth:$versions.truth",
+]
