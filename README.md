@@ -5,7 +5,7 @@ Boilerplate for new Android app based on [Ribot](https://github.com/ribot/androi
 Libraries and tools included:
 
 - Support libraries
-- RecyclerView, CardView, ConstraintLayout, Design and Annotations
+- RecyclerView, CardView, Design and Annotations
 - [RxJava](https://github.com/ReactiveX/RxJava), [RxAndroid](https://github.com/ReactiveX/RxAndroid) and [RxLifecycle](https://github.com/trello/RxLifecycle)
 - [Retrolambda](https://github.com/orfjackal/retrolambda) with [Gradle Retrolambda Plugin](https://github.com/evant/gradle-retrolambda)
 - [Retrofit 2](http://square.github.io/retrofit/)
