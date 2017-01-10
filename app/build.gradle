@@ -2,10 +2,10 @@ apply plugin: 'com.android.application'
 apply plugin: 'com.github.ben-manes.versions'
 apply plugin: 'me.tatarka.retrolambda'
 apply from: "$config/codeCoverage.gradle"
-apply from: "$config/quality.gradle"
+apply from: "$config/qualityCheck.gradle"
 
 android {
-    // Declared in dependencies.gradle in the root of the project.
+    // Declared in config/dependencies.gradle
     compileSdkVersion versions.compileSdk
     buildToolsVersion versions.buildTools
 

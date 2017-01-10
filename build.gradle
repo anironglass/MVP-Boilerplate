@@ -14,18 +14,18 @@ buildscript {
     repositories {
         jcenter()
     }
-    dependencies {
-        // See config/dependencies.gradle for declaration of plugins.
 
+    // See config/dependencies.gradle for declaration of plugins
+    dependencies {
         classpath gradlePlugins.android
 
-        // Backport of some Java 8 language features such as Lambdas and method references.
+        // Backport of some Java 8 language features such as Lambdas and method references
         classpath gradlePlugins.retrolambda
 
-        // Needed for Lint + Retrolambda.
+        // Needed for Lint + Retrolambda
         classpath gradlePlugins.lombok
 
-        // Code coverage.
+        // Code coverage
         classpath gradlePlugins.jacoco
 
         // Method count plugin for android projects
@@ -35,7 +35,7 @@ buildscript {
         classpath gradlePlugins.versions
     }
 
-    // Part of workaround for Lint + Retrolambda.
+    // Part of workaround for Lint + Retrolambda
     configurations.classpath.exclude group: 'com.android.tools.external.lombok'
 }
 
@@ -44,7 +44,7 @@ allprojects {
         jcenter()
     }
 
-    // Workaround to prevent Gradle from stealing focus from other apps during tests run/etc.
+    // Workaround to prevent Gradle from stealing focus from other apps during tests run/etc
     tasks.withType(JavaForkOptions) {
         jvmArgs '-Djava.awt.headless=true'
     }
