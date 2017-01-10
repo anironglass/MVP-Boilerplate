@@ -12,7 +12,7 @@ import dagger.Module;
 import dagger.Provides;
 import ua.anironglass.boilerplate.App;
 import ua.anironglass.boilerplate.data.remote.ApiService;
-import ua.anironglass.boilerplate.injection.ApplicationContext;
+import ua.anironglass.boilerplate.injection.qualifiers.ApplicationContext;
 
 
 /**

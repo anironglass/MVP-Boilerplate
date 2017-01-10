@@ -1,4 +1,4 @@
-package ua.anironglass.boilerplate.injection;
+package ua.anironglass.boilerplate.injection.qualifiers;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

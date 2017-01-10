@@ -14,7 +14,7 @@ import rx.Observable;
 import rx.Subscriber;
 import rx.Subscription;
 import rx.subscriptions.Subscriptions;
-import ua.anironglass.boilerplate.injection.ApplicationContext;
+import ua.anironglass.boilerplate.injection.qualifiers.ApplicationContext;
 
 @Singleton
 public final class NetworkStateHelper {

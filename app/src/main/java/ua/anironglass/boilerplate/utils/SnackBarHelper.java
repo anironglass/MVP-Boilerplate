@@ -11,8 +11,8 @@ import android.view.ViewGroup;
 import javax.inject.Inject;
 
 import ua.anironglass.boilerplate.R;
-import ua.anironglass.boilerplate.injection.ActivityContext;
-import ua.anironglass.boilerplate.injection.PerActivity;
+import ua.anironglass.boilerplate.injection.qualifiers.ActivityContext;
+import ua.anironglass.boilerplate.injection.scopes.PerActivity;
 
 @PerActivity
 public final class SnackBarHelper {

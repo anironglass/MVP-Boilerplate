@@ -6,7 +6,7 @@ import android.support.annotation.NonNull;
 
 import dagger.Module;
 import dagger.Provides;
-import ua.anironglass.boilerplate.injection.ActivityContext;
+import ua.anironglass.boilerplate.injection.qualifiers.ActivityContext;
 
 
 @Module

@@ -7,7 +7,7 @@ import android.support.annotation.IntRange;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
-import ua.anironglass.boilerplate.injection.ApplicationContext;
+import ua.anironglass.boilerplate.injection.qualifiers.ApplicationContext;
 
 
 @Singleton

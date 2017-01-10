@@ -15,7 +15,7 @@ import rx.android.schedulers.AndroidSchedulers;
 import timber.log.Timber;
 import ua.anironglass.boilerplate.data.DataManager;
 import ua.anironglass.boilerplate.data.model.Photo;
-import ua.anironglass.boilerplate.injection.ConfigPersistent;
+import ua.anironglass.boilerplate.injection.scopes.ConfigPersistent;
 import ua.anironglass.boilerplate.ui.base.BasePresenter;
 import ua.anironglass.boilerplate.utils.NetworkUtils;
 import ua.anironglass.boilerplate.utils.RxUtils;

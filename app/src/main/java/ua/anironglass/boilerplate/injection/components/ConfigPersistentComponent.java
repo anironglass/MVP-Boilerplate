@@ -1,8 +1,8 @@
 package ua.anironglass.boilerplate.injection.components;
 
 import dagger.Component;
-import ua.anironglass.boilerplate.injection.ConfigPersistent;
 import ua.anironglass.boilerplate.injection.modules.ActivityModule;
+import ua.anironglass.boilerplate.injection.scopes.ConfigPersistent;
 import ua.anironglass.boilerplate.ui.base.BaseActivity;
 
 

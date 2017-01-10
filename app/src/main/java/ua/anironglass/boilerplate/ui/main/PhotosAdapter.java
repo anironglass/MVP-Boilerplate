@@ -21,8 +21,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import ua.anironglass.boilerplate.R;
 import ua.anironglass.boilerplate.data.model.Photo;
-import ua.anironglass.boilerplate.injection.ActivityContext;
-import ua.anironglass.boilerplate.injection.PerActivity;
+import ua.anironglass.boilerplate.injection.qualifiers.ActivityContext;
+import ua.anironglass.boilerplate.injection.scopes.PerActivity;
 
 @PerActivity
 class PhotosAdapter extends RecyclerView.Adapter<PhotosAdapter.ViewHolder>  {
