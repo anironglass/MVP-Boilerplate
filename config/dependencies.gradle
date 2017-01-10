@@ -19,7 +19,7 @@ ext.versions = [
         butterKnife                  : '8.4.0',
         dagger2                      : '2.8',
         glide                        : '3.7.0',
-        gson                         : '2.7',
+        gson                         : '2.8.0',
         okHttp3                      : '3.5.0',
         retrofit2                    : '2.1.0',
         rxJava                       : '1.2.5',
@@ -27,7 +27,7 @@ ext.versions = [
         rxLifecycle                  : '1.0',
         sqlBrite                     : '1.1.1',
         supportLibs                  : '25.1.0',
-        timber                       : '4.4.0',
+        timber                       : '4.5.0',
 
         checkStyle                   : '7.4',
         findBugs                     : '3.0.1',
